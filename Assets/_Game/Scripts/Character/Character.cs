@@ -13,13 +13,8 @@ public class Character : GameUnit
     [SerializeField] protected Transform model;
     [SerializeField] protected Weapon curWeapon;
     [SerializeField] protected float speed = 5f;
-    [SerializeField] protected WeaponData weaponData;
-    [SerializeField] protected HairData hairData;
-    [SerializeField] protected PantData pantData;
     [SerializeField] protected Transform rightHand;
-    [SerializeField] protected Transform head;
-    [SerializeField] protected Renderer pant;
-    private GameObject curHair;
+    [SerializeField]protected Skin currentSkin;
 
     #region components
     [SerializeField] private float range;
@@ -68,6 +63,7 @@ public class Character : GameUnit
     public virtual void OnDeath()
     {
         this.PostEvent(EventID.OnCharacterDie, this);
+        ChangeAnim(Constant.ANIM_DEAD);
         IsDying = true;
     }
     public virtual void OnDespawn()
@@ -75,7 +71,7 @@ public class Character : GameUnit
     }
     public void ChangeAnim(string animName)
     {
-        if (currentAnimName != animName)
+        if (currentAnimName != animName && !IsDying)
         {
             anim.ResetTrigger(animName);
 
@@ -110,7 +106,7 @@ public class Character : GameUnit
     }
     #endregion
 
-    #region weapon
+    #region skin
     public void WeaponEnable()
     {
         curWeapon.gameObject.SetActive(true);
@@ -120,30 +116,35 @@ public class Character : GameUnit
         curWeapon.gameObject.SetActive(false);
     }
 
-    public void ChangeWeapon(WeaponType type)
+    public void TryCloth(UIShop.ShopType shopType,Enum type) 
     {
-        Destroy(curWeapon.gameObject);
-        Weapon prefab = weaponData.GetWeaponPrefab(type);
-        curWeapon = Instantiate(prefab, rightHand);
-        curWeapon.OnInit(this);
+        switch (shopType)
+        {
+            case UIShop.ShopType.hair:
+                currentSkin.DespawnHair();
+                currentSkin.ChangeHair((HairType)type);
+                break;
+            case UIShop.ShopType.pant:
+                currentSkin.ChangePant((PantType)type);
+                break;
+            case UIShop.ShopType.accessory:
+                currentSkin.DespawnAccessory();
+                currentSkin.ChangeAccessory((AccessoryType)type);
+                break;
+            case UIShop.ShopType.skin:
+
+                break;
+            case UIShop.ShopType.weapon:
+                currentSkin.DespawnWeapon();
+                currentSkin.ChangeWeapon((WeaponType)type);
+                curWeapon = currentSkin.CurWeapon;
+                curWeapon.OnInit(this);
+                break;
+        }
     }
     #endregion
 
-    #region skin
-    public void ChangeHair(HairType hairType)
-    {
-        if (curHair != null)
-        {
-            Destroy(curHair.gameObject);
-        }
-        GameObject prefab = hairData.GetPrefab(hairType);
-        curHair = Instantiate(prefab, head);
-    }
-    public void ChangePant(PantType pantType)
-    {
-        pant.material = pantData.GetPantMaterial(pantType);
-    }
-    #endregion
+
 
     #region powerUp
     public void IncresingPoint(int enemyPoint)

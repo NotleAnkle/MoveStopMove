@@ -1,4 +1,5 @@
 ﻿using _Framework.Event.Scripts;
+using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,6 @@ public class Player : Character
     [SerializeField] private AttackRange attackRange;
 
     private bool IsAttacking = false;
-
-    private void Awake()
-    {
-        this.RegisterListener(EventID.OnPlayerHairChange, (param) => ChangeHair((HairType)param));
-        this.RegisterListener(EventID.OnPlayerWeaponChange, (param) => ChangeWeapon((WeaponType)param));
-        this.RegisterListener(EventID.OnPlayerPantChange, (param) => ChangePant((PantType)param));
-    }
 
     #region override
     public override void OnInit()
@@ -36,41 +30,45 @@ public class Player : Character
     public override void OnDeath()
     {
         base.OnDeath();
-        ChangeAnim(Constant.ANIM_DEAD);
+        UIManager.Instance.CloseAll();
+        GameManager.ChangeState(GameState.Revive);
         StartCoroutine(DeadCooldown());
     }
     private IEnumerator DeadCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         OnDespawn();
     }
     public override void OnDespawn()
     {
-        Debug.Log("YOU DIE");
+        UIManager.Instance.OpenUI<UIRevive>();
     }
     #endregion
 
     void Update()
     {
-
-        if (joystick.Direction != Vector2.zero)
+        if (GameManager.IsState(GameState.GamePlay))
         {
-            Run();
-        }
-        else
-        {
-            if (IsHasTarget)
+            if (joystick.Direction != Vector2.zero)
             {
-                if(IsAttackable)
-                {
-                    Attack();
-                }
+                Run();
             }
             else
             {
-                Idle();
+                if (IsHasTarget)
+                {
+                    if (IsAttackable)
+                    {
+                        Attack();
+                    }
+                }
+                else
+                {
+                    Idle();
+                }
             }
         }
+        
     }
 
     #region action
