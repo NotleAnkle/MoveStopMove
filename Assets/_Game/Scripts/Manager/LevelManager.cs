@@ -19,21 +19,38 @@ public class LevelManager : Singleton<LevelManager>
 
     private int botNumber = 50;
 
+    public int PlayerRank;
+
+    private void Awake()
+    {
+        this.RegisterListener(EventID.OnCharacterDie, (param) => CheckLimit((Character)param));
+    }
+
     public void OnInit() 
     {
         player.OnInit();
+        mainCamera.OnInit();
+        bots.Clear();
+        botNumber = 50;
 
         for (int i = 0; i < 8; i++)
         {
             SpawnBot();
         }
-
-        this.RegisterListener(EventID.OnCharacterDie, _ => CheckLimit());
     }
 
-    public void CheckLimit()
+    public void CheckLimit(Character character)
     {
-        if(botNumber > 1)
+        if (character != player)
+        {
+            bots.Remove((Bot)character);
+
+        }
+        else
+        {
+            PlayerRank = bots.Count + botNumber;
+        }
+        if (botNumber > 1)
         {
             SpawnBot();
         }

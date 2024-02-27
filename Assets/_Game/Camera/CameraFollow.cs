@@ -10,6 +10,11 @@ public class CameraFollow : GameUnit
     [SerializeField] private Vector3 offset;
     [SerializeField] private Camera mainCamera;
 
+    public void OnInit()
+    {
+        offset = new Vector3(0, 12f, -10f);
+    }
+
     private void LateUpdate()
     {
         Follow();
