@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3887686645380382088}
   - component: {fileID: 6591534440084263154}
+  - component: {fileID: 959797444}
   m_Layer: 7
   m_Name: Character_Optimieze2
   m_TagString: Untagged
@@ -259,6 +260,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &959797444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263618629113450395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1b1ed04f4a6514489e5157f6e72d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  head: {fileID: 0}
+  pant: {fileID: 0}
+  pantData: {fileID: 11400000, guid: 842396b2851fec54ea14766c786d7e55, type: 2}
+  isCanChange: 1
 --- !u!1 &299691453060041459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0289a8202105e429b59ef73f8724a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bot: {fileID: 8109121083984434808}
 --- !u!1 &8109121083984434811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,15 +2242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565b5c227ebc2714bba852b7960ff1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 4
+  poolType: 7
   anim: {fileID: 6591534440084263154}
   model: {fileID: 3887686645380382088}
   curWeapon: {fileID: 7456284346820929568}
   speed: 3
-  weaponData: {fileID: 11400000, guid: 02309df343c76f9428d1867a9f238857, type: 2}
   rightHand: {fileID: 2577821300855913195}
-  hairData: {fileID: 11400000, guid: 7582a25bfc7f7904b938261560a9652c, type: 2}
-  head: {fileID: 4308649338611537402}
+  currentSkin: {fileID: 959797444}
   range: 10
   targetList: []
   IsAttackable: 1

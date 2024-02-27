@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e604c3c2757e04b4192ecc684d42f573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 0
+  poolType: 2
   type: 2
-  bulletType: 2
-  render: {fileID: 3465413240861321089}
+  bulletType: 5
