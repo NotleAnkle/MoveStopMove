@@ -16,6 +16,12 @@ public class PlayUI : UICanvas
         RegisterEvent();
     }
 
+    private void OnEnable()
+    {
+        botNumberLeft = 50;
+        botNumberText.text = "Alive: " + botNumberLeft;
+    }
+
     private void RegisterEvent()
     {
         this.RegisterListener(EventID.OnCharacterDie, _ => OnBotDie());

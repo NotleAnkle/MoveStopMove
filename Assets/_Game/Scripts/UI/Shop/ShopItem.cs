@@ -1,0 +1,56 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ShopItem : MonoBehaviour
+{
+    public enum State { Buy, Bought, Equipped, Selecting}
+    [SerializeField] private Image img;
+    [SerializeField] private GameObject lockImg;
+    [SerializeField] private Button bt;
+    private int cost;
+    public int Cost => cost;
+
+    public State state;
+    public Enum Type;
+    UIShop shop;
+
+    public void SetShop(UIShop shop)
+    {
+        this.shop = shop;
+    }
+
+    public void Selected()
+    {
+        shop.SelectItem(this);
+    }
+
+    public void SetData<T>(ShopItemData<T> data, UIShop shop) where T : Enum
+    {
+        img.sprite = data.icon;
+        cost = data.cost;
+        Type = data.type;
+        this.shop = shop;
+    }
+    public void SetState(State state)
+    {
+        switch (state)
+        {
+            case State.Buy:
+                lockImg.SetActive(true);
+                break;
+            case State.Bought:
+                lockImg.SetActive(false);
+                break;
+            case State.Equipped:
+                bt.Select();
+                break;
+            case State.Selecting:
+                bt.Select();
+                break;
+        }
+        this.state = state;
+    }
+}

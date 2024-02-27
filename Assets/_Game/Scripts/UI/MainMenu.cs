@@ -1,18 +1,19 @@
+using _UI.Scripts.UI;
+
 namespace _UI.Scripts
 {
     public class MainMenu : UICanvas
     {
         public void PlayButton()
         {
-            LevelManager.Instance.OnInit();
             UIManager.Instance.CloseUI<MainMenu>();
-            UIManager.Instance.OpenUI<PlayUI>();
+            GameManager.Instance.OnRestart();
         }
 
         public void SkinButton()
         {
             UIManager.Instance.CloseUI<MainMenu>();
-            UIManager.Instance.OpenUI<SkinShop>();
+            UIManager.Instance.OpenUI<UIShop>();
         }
 
         public void WeaponButton()

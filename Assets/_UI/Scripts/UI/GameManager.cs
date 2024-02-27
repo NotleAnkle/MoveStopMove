@@ -51,6 +51,15 @@ namespace _UI.Scripts.UI
         private void Start()
         {
             UIManager.Instance.OpenUI<MainMenu>();
+            ChangeState(GameState.MainMenu);
+        }
+
+        public void OnRestart()
+        {
+            SimplePool.CollectAll();
+            LevelManager.Instance.OnInit();
+            UIManager.Instance.OpenUI<PlayUI>();
+            ChangeState(GameState.GamePlay);
         }
     }
 }
