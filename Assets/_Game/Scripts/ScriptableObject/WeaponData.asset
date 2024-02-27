@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a098a82651401a48b157bdf7cbba839, type: 3}
+  m_Script: {fileID: 11500000, guid: 631cfac2b5244004498be3b2a82293a3, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: 
-  weaponPrefabs:
-  - {fileID: 4487231459242684676, guid: 4bb0986a4784f7d4fa0ec3d68005bb6f, type: 3}
-  - {fileID: 1725839297844187978, guid: 1c039219dbbf8d044afe138352b6f8bc, type: 3}
-  - {fileID: 6688074717590160451, guid: d3ef44317f872bc48b888b6460ea93a3, type: 3}
+  weaponItems:
+  - icon: {fileID: 21300000, guid: 33c349a86a058c34196d38bf8d1d2ca9, type: 3}
+    type: 2
+    cost: 100
+  - icon: {fileID: 21300000, guid: 2dbdf917bda18854c9feb89adc0a75f7, type: 3}
+    type: 1
+    cost: 200
+  - icon: {fileID: 21300000, guid: 850560a3d5d05414985431b7fe969284, type: 3}
+    type: 3
+    cost: 300

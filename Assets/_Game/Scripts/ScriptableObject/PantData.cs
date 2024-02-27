@@ -8,7 +8,7 @@ public class PantData : ScriptableObject
 {
     [SerializeField] Material[] pantMaterials;
 
-    public Material GetPantMaterial(PantType pantType)
+    public Material GetPant(PantType pantType)
     {
         return pantMaterials[(int) pantType];
     }
