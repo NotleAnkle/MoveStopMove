@@ -7,7 +7,6 @@ using UnityEngine;
 public abstract class Bullet : GameUnit
 {
     [SerializeField] protected float speed = 5f;
-    [SerializeField] private Renderer render;
     protected Vector3 targetPos;
     protected Vector3 startPos;
     protected Vector3 direction;
@@ -15,9 +14,8 @@ public abstract class Bullet : GameUnit
 
     protected Character owner;
 
-    public void OnInit(Vector3 target, Character character, Material material)
+    public void OnInit(Vector3 target, Character character)
     {
-        render.material = material;
         owner = character;
         range = character.Range;
         TurnTo(target);
