@@ -145,10 +145,44 @@ public enum ParticleType
 public enum PoolType
 {
     None = 0,
-    HammerBullet = 1,
-    KinfeBullet = 2,
-    BoomerangBullet = 3,
-    Bot = 4,
+
+    W_Hammer,
+    W_Kinfe,
+    W_Boomerang,
+
+    BL_HammerBullet,
+    BL_KinfeBullet,
+    BL_BoomerangBullet,
+
+    Bot,
+
+    P_BatMan,
+    P_ChamBi,
+    P_Comy,
+    P_DaBao,
+    P_Oninon,
+    P_Pokemon,
+    P_Rainbow,
+    P_Skull,
+    P_VanTim,
+
+    H_Arrow,
+    H_Cowboy,
+    H_Crown,
+    H_Ear,
+    H_Flower,
+    H_Hair,
+    H_Hat,
+    H_Hat_Cap,
+    H_Hat_Yellow,
+    H_Headphone,
+    H_Horn,
+    H_Rau,
+
+    ACC_Shield_1,
+    ACC_Shield_2,
+
+
 }
 
 
