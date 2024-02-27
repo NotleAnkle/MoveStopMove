@@ -18,3 +18,53 @@ public class Constant
 
     public const float TIME_ATTACK_DELAY = 0.3f;
 }
+
+public enum PantType
+{
+    None = 0,
+    BatMan ,
+    ChamBi ,
+    Comy,
+    DaBao,
+    Oninon,
+    Pokemon,
+    Rainbow,
+    Skull,
+    VanTim,
+}
+
+public enum WeaponType
+{
+    None = 0,
+    Hammer = PoolType.W_Hammer,
+    Kinfe = PoolType.W_Kinfe,
+    Boomerang = PoolType.W_Boomerang,
+}
+
+public enum HairType
+{
+    None = 0,
+    Arrow = PoolType.H_Arrow,
+    Cowboy = PoolType.H_Cowboy,
+    Crown = PoolType.H_Crown,
+    Ear = PoolType.H_Ear,
+    Flower = PoolType.H_Flower,
+    Hair = PoolType.H_Hair,
+    Hat = PoolType.H_Hat,
+    Hat_Cap = PoolType.H_Hat_Cap,
+    Hat_Yellow = PoolType.H_Hat_Yellow,
+    Headphone = PoolType.H_Headphone,
+    Horn = PoolType.H_Horn,
+    Rau = PoolType.H_Rau,
+}
+
+public enum AccessoryType
+{
+    None = 0,
+    Shield_1 = PoolType.ACC_Shield_1,
+    Shield_2 = PoolType.ACC_Shield_2,
+}
+public enum SkinType
+{
+    Norman = 0
+}
