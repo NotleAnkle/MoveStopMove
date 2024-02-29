@@ -2,6 +2,7 @@ using _Framework;
 using _UI.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UIShop;
@@ -21,6 +22,8 @@ public class UIShop : UICanvas
     private ShopItemBar curBar;
     private ShopItem curItem;
     private ShopType shopType;
+
+    private ShopItem itemEquiped;
 
     [SerializeField] private ShopItem prefab; 
     MiniPool<ShopItem> miniPool = new MiniPool<ShopItem>();
@@ -75,6 +78,8 @@ public class UIShop : UICanvas
     {
 
         LevelManager.Instance.Player.TryCloth(curBar.Type, item.Type);
+        ShopItem.State state = UserData.Ins.GetEnumData(item.Type.ToString(), ShopItem.State.Buy);
+        item.SetState(state);
         curItem = item;
         SetButtonState(item);
     }
@@ -105,6 +110,10 @@ public class UIShop : UICanvas
             case ShopItem.State.Bought:
                 OnEquipButtonClick();
                 break;
+            case ShopItem.State.Equipped:
+                UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
+                SelectItem(curItem);
+                break;
         }
     }
 
@@ -117,7 +126,6 @@ public class UIShop : UICanvas
         }
         UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
         SelectItem(curItem);
-        curItem.SetState(ShopItem.State.Buy);
     }
 
     private void OnEquipButtonClick()
@@ -125,26 +133,25 @@ public class UIShop : UICanvas
         if (curItem != null)
         {
             UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Equipped);
-            SetButtonState(curItem);
-            curItem.SetState(ShopItem.State.Equipped);
+            if (itemEquiped)
+            {
+                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Bought);
+                itemEquiped.SetState(ShopItem.State.Bought);
+                itemEquiped = curItem;
+            }
             switch (shopType)
             {
                 case ShopType.hair:
-                    //reset trang thai do dang deo ve bought
-                    UserData.Ins.SetEnumData(UserData.Ins.playerHair.ToString(), ShopItem.State.Bought);
                     //save id do moi vao player
                     UserData.Ins.SetEnumData(UserData.Key_Player_Hair, ref UserData.Ins.playerHair, (HairType)curItem.Type);
                     break;
                 case ShopType.pant:
-                    UserData.Ins.SetEnumData(UserData.Ins.playerPant.ToString(), ShopItem.State.Bought);
                     UserData.Ins.SetEnumData(UserData.Key_Player_Pant, ref UserData.Ins.playerPant, (PantType)curItem.Type);
                     break;
                 case ShopType.accessory:
-                    UserData.Ins.SetEnumData(UserData.Ins.playerAccessory.ToString(), ShopItem.State.Bought);
                     UserData.Ins.SetEnumData(UserData.Key_Player_Accessory, ref UserData.Ins.playerAccessory, (AccessoryType)curItem.Type);
                     break;
                 case ShopType.skin:
-                    UserData.Ins.SetEnumData(UserData.Ins.playerSkin.ToString(), ShopItem.State.Bought);
                     UserData.Ins.SetEnumData(UserData.Key_Player_Skin, ref UserData.Ins.playerSkin, (SkinType)curItem.Type);
                     break;
                 case ShopType.weapon:
@@ -152,6 +159,7 @@ public class UIShop : UICanvas
                 default:
                     break;
             }
+            SelectItem(itemEquiped);
         }
     }
 
@@ -163,6 +171,12 @@ public class UIShop : UICanvas
             ShopItem item = miniPool.Spawn();
             item.SetState(state);
             item.SetData<T>(items[i], this);
+
+            if(item.state == ShopItem.State.Equipped)
+            {
+                itemEquiped = item;
+                SelectItem(itemEquiped);
+            }
         }
     }
 

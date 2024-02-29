@@ -1,3 +1,4 @@
+using _UI.Scripts;
 using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,6 @@ public class UIRank : UICanvas
     public void OnTouch()
     {
         UIManager.Instance.CloseUI<UIRank>();
-        GameManager.Instance.OnRestart();
+        UIManager.Instance.OpenUI<MainMenu>();
     }
 }

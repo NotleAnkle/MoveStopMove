@@ -9,6 +9,7 @@ public class ShopItem : MonoBehaviour
     public enum State { Buy, Bought, Equipped, Selecting}
     [SerializeField] private Image img;
     [SerializeField] private GameObject lockImg;
+    [SerializeField] private GameObject equipImg;
     [SerializeField] private Button bt;
     private int cost;
     public int Cost => cost;
@@ -36,6 +37,7 @@ public class ShopItem : MonoBehaviour
     }
     public void SetState(State state)
     {
+        equipImg.SetActive(false);
         switch (state)
         {
             case State.Buy:
@@ -46,6 +48,8 @@ public class ShopItem : MonoBehaviour
                 break;
             case State.Equipped:
                 bt.Select();
+                lockImg.SetActive(false);
+                equipImg.SetActive(true);
                 break;
             case State.Selecting:
                 bt.Select();

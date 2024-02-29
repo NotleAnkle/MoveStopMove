@@ -4,6 +4,12 @@ namespace _UI.Scripts
 {
     public class MainMenu : UICanvas
     {
+        public override void Open()
+        {
+            base.Open();
+            SimplePool.Collect(PoolType.Bot);
+            LevelManager.Instance.OnReset();
+        }
         public void PlayButton()
         {
             UIManager.Instance.CloseUI<MainMenu>();
@@ -19,7 +25,7 @@ namespace _UI.Scripts
         public void WeaponButton()
         {
             UIManager.Instance.CloseUI<MainMenu>();
-            UIManager.Instance.OpenUI<WeaponShop>();
+            UIManager.Instance.OpenUI<UIWeaponShop>();
         }
     }
 }
