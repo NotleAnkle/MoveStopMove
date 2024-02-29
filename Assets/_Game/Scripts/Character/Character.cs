@@ -11,7 +11,6 @@ public class Character : GameUnit
 {
     [SerializeField] private Animator anim;
     [SerializeField] protected Transform model;
-    [SerializeField] protected Weapon curWeapon;
     [SerializeField] protected float speed = 5f;
     [SerializeField] protected Transform rightHand;
     [SerializeField]protected Skin currentSkin;
@@ -45,18 +44,20 @@ public class Character : GameUnit
     public bool IsHasTarget => targetList.Count > 0;
     public bool IsAttackable = true;
     public bool IsDying = false;
+
+    protected Weapon curWeapon => currentSkin.CurWeapon;
     #endregion
 
     #region basic
     public virtual void OnInit()
     {
-        ChangeAnim(Constant.ANIM_IDLE);
         targetList.Clear();
         model.transform.localScale = Vector3.one;
         point = 0;
         range = Constant.RANGE_DEFAULT;
-        curWeapon.OnInit(this);
+        TryCloth(UIShop.ShopType.weapon, WeaponType.Kinfe);
         IsDying = false;
+        ChangeAnim(Constant.ANIM_IDLE);
 
         this.RegisterListener(EventID.OnCharacterDie, (param) => RemoveTarget((Character)param));
     }
@@ -121,26 +122,27 @@ public class Character : GameUnit
         switch (shopType)
         {
             case UIShop.ShopType.hair:
-                currentSkin.DespawnHair();
                 currentSkin.ChangeHair((HairType)type);
                 break;
             case UIShop.ShopType.pant:
                 currentSkin.ChangePant((PantType)type);
                 break;
             case UIShop.ShopType.accessory:
-                currentSkin.DespawnAccessory();
                 currentSkin.ChangeAccessory((AccessoryType)type);
                 break;
             case UIShop.ShopType.skin:
 
                 break;
             case UIShop.ShopType.weapon:
-                currentSkin.DespawnWeapon();
                 currentSkin.ChangeWeapon((WeaponType)type);
-                curWeapon = currentSkin.CurWeapon;
                 curWeapon.OnInit(this);
                 break;
         }
+    }
+
+    public virtual void EquipedCloth()
+    {
+        
     }
     #endregion
 

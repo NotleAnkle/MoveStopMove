@@ -22,6 +22,7 @@ public class Skin : MonoBehaviour
 
     public void ChangeWeapon(WeaponType weaponType)
     {
+        DespawnWeapon();
         currentWeapon = SimplePool.Spawn<Weapon>((PoolType)weaponType, rightHand);
     }
 
@@ -29,6 +30,7 @@ public class Skin : MonoBehaviour
     {
         if (isCanChange && accessoryType != AccessoryType.None)
         {
+            DespawnAccessory();
             currentAccessory = SimplePool.Spawn<Accessory>((PoolType)accessoryType, leftHand);
         }
     }
@@ -37,6 +39,7 @@ public class Skin : MonoBehaviour
     {
         if (isCanChange && hatType != HairType.None)
         {
+            DespawnHair();
             currentHair = SimplePool.Spawn<Hair>((PoolType)hatType, head);
         }
     }
@@ -65,5 +68,15 @@ public class Skin : MonoBehaviour
     internal void DespawnWeapon()
     {
         if (currentWeapon) SimplePool.Despawn(currentWeapon);
+    }
+
+    public void  WearEquipedCloth()
+    {
+        ChangeHair(UserData.Ins.GetEnumData(UserData.Key_Player_Hair, HairType.None));
+        ChangePant(UserData.Ins.GetEnumData(UserData.Key_Player_Pant, PantType.BatMan));
+        ChangeAccessory(UserData.Ins.GetEnumData(UserData.Key_Player_Accessory, AccessoryType.None));
+
+        ChangeWeapon(UserData.Ins.GetEnumData(UserData.Key_Player_Weapon, WeaponType.Kinfe));
+
     }
 }

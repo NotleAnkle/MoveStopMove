@@ -18,6 +18,7 @@ public class Player : Character
     {
         base.OnInit();
         attackRange.OnInit();
+        EquipedCloth();
     }
 
     public override void PowerUp()
@@ -42,6 +43,13 @@ public class Player : Character
     public override void OnDespawn()
     {
         UIManager.Instance.OpenUI<UIRevive>();
+    }
+
+    public override void EquipedCloth()
+    {
+        base.EquipedCloth();
+        currentSkin.WearEquipedCloth();
+        curWeapon.OnInit(this);
     }
     #endregion
 
@@ -104,6 +112,8 @@ public class Player : Character
         IsAttacking = false;
         IsAttackable = true;
     }
+
+    //quay mat ve phia muc tieu
     private void TurnTo(Vector3 target)
     {
         Vector3 lookDirection = target - TF.position;
@@ -123,6 +133,8 @@ public class Player : Character
         yield return new WaitForSeconds(0.1f);
         Idle();
     }
+
+    //quay mat ve phia joystick
     private void Turn()
     {
         model.transform.forward = new Vector3(joystick.Direction.x, 0f, joystick.Direction.y);
