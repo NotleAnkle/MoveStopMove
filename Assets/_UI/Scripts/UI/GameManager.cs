@@ -56,7 +56,6 @@ namespace _UI.Scripts.UI
 
         public void OnRestart()
         {
-            SimplePool.CollectAll();
             LevelManager.Instance.OnInit();
             UIManager.Instance.OpenUI<PlayUI>();
             ChangeState(GameState.GamePlay);

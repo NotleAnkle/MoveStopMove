@@ -28,15 +28,17 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnInit() 
     {
-        player.OnInit();
-        mainCamera.OnInit();
-        bots.Clear();
-        botNumber = 50;
-
         for (int i = 0; i < 8; i++)
         {
             SpawnBot();
         }
+    }
+    public void OnReset()
+    {
+        player.OnInit();
+        mainCamera.OnInit();
+        bots.Clear();
+        botNumber = 50;
     }
 
     public void CheckLimit(Character character)
