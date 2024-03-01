@@ -59,6 +59,7 @@ namespace _UI.Scripts.UI
             LevelManager.Instance.OnInit();
             UIManager.Instance.OpenUI<PlayUI>();
             ChangeState(GameState.GamePlay);
+            CameraFollower.Instance.ChangeState(CameraFollower.State.Gameplay);
         }
     }
 }

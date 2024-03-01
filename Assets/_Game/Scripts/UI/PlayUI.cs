@@ -20,6 +20,7 @@ public class PlayUI : UICanvas
     {
         botNumberLeft = 50;
         botNumberText.text = "Alive: " + botNumberLeft;
+        LevelManager.Instance.SetTargetIndicatorAlpha(1);
     }
 
     private void RegisterEvent()
