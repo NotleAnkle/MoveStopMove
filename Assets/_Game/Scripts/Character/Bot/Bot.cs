@@ -11,6 +11,7 @@ public class Bot : Character
     [SerializeField] GameObject targetCircle;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] BotAttackRange attackRange;
+    [SerializeField] NameData nameData;
 
     private Vector3 targetPos;
     private IState<Bot> curState;
@@ -25,6 +26,7 @@ public class Bot : Character
         agent.speed = speed;
         curState = new IdleState();
         TurnOffTargetCircle();
+        indicator.SetName(nameData.getRandomName());
     }
     public override void OnDeath()
     {
@@ -64,13 +66,6 @@ public class Bot : Character
             TurnTo(pos);
             StartCoroutine(Throw(pos));
         }
-    }
-    private void TurnTo(Vector3 target)
-    {
-        Vector3 lookDirection = target - TF.position;
-        Quaternion rotation = Quaternion.LookRotation(lookDirection);
-
-        model.rotation = rotation;
     }
     private IEnumerator Throw(Vector3 target)
     {

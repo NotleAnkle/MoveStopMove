@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59a9636d589dc94580ebba13685f8ff, type: 3}
+  m_Name: NameData
+  m_EditorClassIdentifier: 
+  names:
+  - "Deianira Alfr\u0113ds"
+  - Anders Oluwakanyinsola
+  - Sonia Zaya
+  - Bernard Ioan
+  - "Achilleus Steingr\xEDmr"
+  - Kazimir Ainslee
+  - Kay Aryan
+  - Boitumelo Torhild
+  - "Arn\xFE\xF3rr N\u0259rgiz"
+  - Archippos Loui
+  - Sunitha Grigorii
+  - Adisa Silvestre
+  - Dmitriy Angela
+  - "Lenu\u021Ba Beau"
+  - Jasna Filippa
+  - Antonia Parvan
+  - Osee Telesphoros
+  - Elam Dyaus Pita
+  - Gillis Bastien
+  - Shammuramat Mladen

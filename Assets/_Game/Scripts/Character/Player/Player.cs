@@ -16,33 +16,26 @@ public class Player : Character
     #region override
     public override void OnInit()
     {
+        SumCoin();
         base.OnInit();
         attackRange.OnInit();
         EquipedCloth();
+        indicator.SetName("You");
+        SetRotationDefault();
     }
 
     public override void PowerUp()
     {
         base.PowerUp();
-        LevelManager.Instance.Camera.PowerUp();
         attackRange.OnInit();
+        float rate = (this.Range - Constant.RANGE_DEFAULT) / (Constant.RANGE_MAX - Constant.RANGE_DEFAULT);
+        CameraFollower.Instance.SetRateOffset(rate);
     }
 
     public override void OnDeath()
     {
         base.OnDeath();
-        UIManager.Instance.CloseAll();
-        GameManager.ChangeState(GameState.Revive);
-        StartCoroutine(DeadCooldown());
-    }
-    private IEnumerator DeadCooldown()
-    {
-        yield return new WaitForSeconds(0.5f);
-        OnDespawn();
-    }
-    public override void OnDespawn()
-    {
-        UIManager.Instance.OpenUI<UIRevive>();
+        LevelManager.Instance.OnFail();
     }
 
     public override void EquipedCloth()
@@ -112,15 +105,6 @@ public class Player : Character
         IsAttacking = false;
         IsAttackable = true;
     }
-
-    //quay mat ve phia muc tieu
-    private void TurnTo(Vector3 target)
-    {
-        Vector3 lookDirection = target - TF.position;
-        Quaternion rotation = Quaternion.LookRotation(lookDirection);
-
-        model.rotation = rotation;
-    }
     private IEnumerator Throw(Vector3 target)
     {
         yield return new WaitForSeconds(Constant.TIME_ATTACK_DELAY);
@@ -150,4 +134,11 @@ public class Player : Character
         return TF.position;
     }
     #endregion
+
+    private void SumCoin()
+    {
+        int coin = UserData.Ins.coin;
+        coin += Point;
+        UserData.Ins.SetIntData(UserData.Key_Coin,ref UserData.Ins.coin, coin);
+    }
 }

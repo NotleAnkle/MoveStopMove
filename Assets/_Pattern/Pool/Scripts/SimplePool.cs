@@ -40,12 +40,12 @@ public static class SimplePool
         //list object in pool
         Queue<GameUnit> m_inactive;
         //collect obj active ingame
-        HashSet<GameUnit> m_active;
+        List<GameUnit> m_active;
         // The prefab that we are pooling
         GameUnit m_prefab;
 
         public bool IsCollect { get => m_collect; }
-        public HashSet<GameUnit> Active => m_active;
+        public List<GameUnit> Active => m_active;
         public int Count => m_inactive.Count + m_active.Count;
         public Transform Root => m_sRoot;
 
@@ -56,7 +56,7 @@ public static class SimplePool
             m_sRoot = parent;
             this.m_prefab = prefab;
             m_collect = collect;
-            if (m_collect) m_active = new HashSet<GameUnit>();
+            if (m_collect) m_active = new List<GameUnit>();
         }
 
         // Spawn an object from our pool with position and rotation
@@ -127,16 +127,9 @@ public static class SimplePool
         //collect all unit comeback to pool
         public void Collect()
         {
-            //while (m_active.Count > 0)
-            //{
-            //    Despawn(m_active[0]);
-            //}
-
-
-            HashSet<GameUnit> units = new HashSet<GameUnit>(m_active);
-            foreach (var item in units)
+            while (m_active.Count > 0)
             {
-                Despawn(item);
+                Despawn(m_active[0]);
             }
         }
     }
@@ -157,8 +150,12 @@ public static class SimplePool
         {
             if (root == null)
             {
-                PoolControler controler = GameObject.FindObjectOfType<PoolControler>();
-                root = controler != null ? controler.transform : new GameObject("Pool").transform;
+                root = GameObject.FindObjectOfType<PoolControler>().transform;
+
+                if (root == null)
+                {
+                    root = new GameObject("Pool").transform;
+                }
             }
 
             return root;
@@ -231,11 +228,11 @@ public static class SimplePool
 
     #region Get List object ACTIVE
     // get all member is active in game
-    public static HashSet<GameUnit> GetAllUnitIsActive(GameUnit obj)
+    public static List<GameUnit> GetAllUnitIsActive(GameUnit obj)
     {
-        return IsHasPool(obj) ? GetPool(obj).Active : new HashSet<GameUnit>();
+        return IsHasPool(obj) ? GetPool(obj).Active : new List<GameUnit>();
     }
-    public static HashSet<GameUnit> GetAllUnitIsActive(PoolType poolType)
+    public static List<GameUnit> GetAllUnitIsActive(PoolType poolType)
     {
         return GetAllUnitIsActive(GetPrefabByType(poolType));
     }  

@@ -14,27 +14,14 @@ public class Character : GameUnit
     [SerializeField] protected float speed = 5f;
     [SerializeField] protected Transform rightHand;
     [SerializeField]protected Skin currentSkin;
+    [SerializeField] protected Transform indicatorPoint;
 
     #region components
     [SerializeField] private float range;
     private int point = 0;
     public Vector3 throwPoint => rightHand.position;
 
-    public float Range
-    {
-        get => range;
-        set => SetRange(value);
-    }
-
-    public void SetRange(float value)
-    {
-        range = value;
-    }
-
-    public void SetRotationDefault()
-    {
-        model.localRotation = Quaternion.identity;
-    }
+    public float Range => range;
 
     [SerializeField] private List<Character> targetList = new List<Character>();
 
@@ -46,7 +33,17 @@ public class Character : GameUnit
     public bool IsDying = false;
 
     protected Weapon curWeapon => currentSkin.CurWeapon;
+
+    protected TargetIndicator indicator;
+
+    public string ownerName => indicator.Name;
+    public string killerName;
     #endregion
+
+    private void Awake()
+    {
+        this.RegisterListener(EventID.OnCharacterDie, (param) => RemoveTarget((Character)param));
+    }
 
     #region basic
     public virtual void OnInit()
@@ -59,13 +56,18 @@ public class Character : GameUnit
         IsDying = false;
         ChangeAnim(Constant.ANIM_IDLE);
 
-        this.RegisterListener(EventID.OnCharacterDie, (param) => RemoveTarget((Character)param));
+        if (!indicator)
+        {
+            indicator = SimplePool.Spawn<TargetIndicator>(PoolType.TargetIndicator);
+        }
+        indicator.SetTarget(indicatorPoint);
     }
     public virtual void OnDeath()
     {
         this.PostEvent(EventID.OnCharacterDie, this);
         ChangeAnim(Constant.ANIM_DEAD);
         IsDying = true;
+        indicator.SetAlpha(0);
     }
     public virtual void OnDespawn()
     {
@@ -105,6 +107,10 @@ public class Character : GameUnit
     {
         return targetList[0].TF.position + Vector3.up;
     }
+    protected void TurnTo(Vector3 targetPos)
+    {
+        model.LookAt(targetPos + (TF.position.y - targetPos.y) * Vector3.up);
+    }
     #endregion
 
     #region skin
@@ -115,6 +121,10 @@ public class Character : GameUnit
     public void WeaponDisable()
     {
         curWeapon.gameObject.SetActive(false);
+    }
+    public void SetRotationDefault()
+    {
+        model.localRotation = Quaternion.identity;
     }
 
     public void TryCloth(UIShop.ShopType shopType,Enum type) 
@@ -146,19 +156,17 @@ public class Character : GameUnit
     }
     #endregion
 
-
-
     #region powerUp
     public void IncresingPoint(int enemyPoint)
     {
         enemyPoint = enemyPoint < 1 ? 1 : enemyPoint;
         point += enemyPoint;
-        PowerUp();
 
-        if (point % 5 == 0)
+        if (point % 2 == 0)
         {
             PowerUp();
         }
+        indicator.SetScore(point);
     }
     public virtual void PowerUp()
     {
@@ -167,4 +175,10 @@ public class Character : GameUnit
     }
     #endregion
 
+    #region other
+    public void SetKillerName(string name)
+    {
+        killerName = name;
+    }
+    #endregion
 }

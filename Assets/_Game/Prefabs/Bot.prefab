@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &774443471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774443472}
+  m_Layer: 7
+  m_Name: Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774443472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774443471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8109121083984434809}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187014733804171970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2258,7 @@ Transform:
   - {fileID: 8109121083252963338}
   - {fileID: 3887686645380382088}
   - {fileID: 8109121084065814320}
+  - {fileID: 774443472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2245,10 +2277,10 @@ MonoBehaviour:
   poolType: 7
   anim: {fileID: 6591534440084263154}
   model: {fileID: 3887686645380382088}
-  curWeapon: {fileID: 0}
   speed: 3
   rightHand: {fileID: 2577821300855913195}
   currentSkin: {fileID: 959797444}
+  indicatorPoint: {fileID: 774443472}
   range: 10
   targetList: []
   IsAttackable: 1
@@ -2256,6 +2288,7 @@ MonoBehaviour:
   targetCircle: {fileID: 8109121084065814322}
   agent: {fileID: 8109121083984434812}
   attackRange: {fileID: 8109121083252963337}
+  nameData: {fileID: 11400000, guid: 4313f774962e9474da29af6ae2737e37, type: 2}
 --- !u!136 &8109121083984434814
 CapsuleCollider:
   m_ObjectHideFlags: 0
