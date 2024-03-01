@@ -182,7 +182,7 @@ public enum PoolType
     ACC_Shield_1,
     ACC_Shield_2,
 
-
+    TargetIndicator,
 }
 
 
