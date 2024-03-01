@@ -44,6 +44,7 @@ public abstract class Bullet : GameUnit
             OnDespawn();
             character.OnDeath();
             owner.IncresingPoint(character.Point);
+            character.SetKillerName(owner.ownerName);
         }
     }
 

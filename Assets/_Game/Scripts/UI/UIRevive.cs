@@ -1,3 +1,4 @@
+using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,15 +9,18 @@ public class UIRevive : UICanvas
 {
     [SerializeField] private Text sec;
     private float timer = 5f;
-    private void OnEnable()
+    public override void Open()
     {
+        base.Open();
         timer = 5f;
         sec.text = timer.ToString();
+        GameManager.ChangeState(GameState.Revive);
+        LevelManager.Instance.SetTargetIndicatorAlpha(0);
     }
     public void OnReject()
     {
         UIManager.Instance.CloseUI<UIRevive>();
-        UIManager.Instance.OpenUI<UIRank>();
+        UIManager.Instance.OpenUI<UIRank>().OnFail();
     }
 
     public void OneSecPass()

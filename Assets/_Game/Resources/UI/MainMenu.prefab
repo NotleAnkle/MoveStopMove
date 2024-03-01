@@ -1083,6 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
+  txtCoin: {fileID: 8984776492010828295}
 --- !u!1 &8984776492010828293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1096,7 @@ GameObject:
   - component: {fileID: 8984776492010828294}
   - component: {fileID: 8984776492010828295}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: txtCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,8 +16,9 @@ public class UIShop : UICanvas
     [SerializeField] private GameObject contentPanel;
 
     [SerializeField] private Text txtCoin;
-    [SerializeField] private Text txtItemState;
+    [SerializeField] private Text txtCost;
     [SerializeField] private ShopItemBar[] bars;
+    [SerializeField] private GameObject[] buttons;
 
     private ShopItemBar curBar;
     private ShopItem curItem;
@@ -44,6 +45,7 @@ public class UIShop : UICanvas
         SelectBar(curBar);
 
         txtCoin.text = UserData.Ins.coin.ToString();
+        CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
     }
     internal void SelectBar(ShopItemBar selectBar)
     {
@@ -89,15 +91,26 @@ public class UIShop : UICanvas
         switch (item.state)
         {
             case ShopItem.State.Buy:
-                txtItemState.text = item.Cost.ToString();
+                SetButton(0);
+                txtCost.text = item.Cost.ToString();
                 break;
             case ShopItem.State.Bought:
-                txtItemState.text = "Equip";
+                SetButton(1);
                 break;
             case ShopItem.State.Equipped:
-                txtItemState.text = "Equipped";
+                SetButton(2);
                 break;
         }
+    }
+
+    private void SetButton(int index)
+    {
+        // 0: Buy, 1: Bought, 2: Equipped
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(false);
+        }
+        buttons[index].SetActive(true);
     }
 
     public void ButtonClick()
@@ -111,21 +124,23 @@ public class UIShop : UICanvas
                 OnEquipButtonClick();
                 break;
             case ShopItem.State.Equipped:
-                UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
-                SelectItem(curItem);
+                //UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
+                //SelectItem(curItem);
                 break;
         }
     }
 
     private void OnBuyButtonClick()
     {
-        if (UserData.Ins.coin > curItem.Cost)
+        if (UserData.Ins.coin >= curItem.Cost)
         {
             int coin = UserData.Ins.coin - curItem.Cost;
-            UserData.Ins.coin = coin;
+            UserData.Ins.SetIntData(UserData.Key_Coin, ref UserData.Ins.coin, coin);
+            UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
+            SelectItem(curItem);
+            SetButton(1);
         }
-        UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
-        SelectItem(curItem);
+
     }
 
     private void OnEquipButtonClick()
@@ -160,6 +175,7 @@ public class UIShop : UICanvas
                     break;
             }
             SelectItem(itemEquiped);
+            SetButton(2);
         }
     }
 
