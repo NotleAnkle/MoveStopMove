@@ -18,11 +18,13 @@ public class Constant
     public const float RANGE_MAX = 18f;
 
     public const float TIME_ATTACK_DELAY = 0.3f;
+
+    public const float BOT_RATION_IDLE = 0.5f;
+    public const float BOT_RATION_ATTACK = 0.5f;
 }
 
 public enum PantType
 {
-    None = 0,
     BatMan ,
     ChamBi ,
     Comy,
@@ -36,7 +38,6 @@ public enum PantType
 
 public enum WeaponType
 {
-    None = 0,
     Hammer = PoolType.W_Hammer,
     Kinfe = PoolType.W_Kinfe,
     Boomerang = PoolType.W_Boomerang,
@@ -67,5 +68,10 @@ public enum AccessoryType
 }
 public enum SkinType
 {
-    Norman = 0
+    Normal = PoolType.SKIN_Normal,
+    Devil = PoolType.SKIN_Devil,
+    Angle = PoolType.SKIN_Angle,
+    Deadpool = PoolType.SKIN_Deadpool,
+    Thor = PoolType.SKIN_Thor,
+    Witch = PoolType.SKIN_Witch,
 }

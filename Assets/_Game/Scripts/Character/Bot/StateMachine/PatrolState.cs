@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PatrolState : IState<Bot>
 {
+    private float targetCooldown;
     public void OnEnter(Bot t)
     {
         t.SetRotationDefault();
@@ -15,13 +16,28 @@ public class PatrolState : IState<Bot>
 
     public void OnExecute(Bot t)
     {
+        targetCooldown = targetCooldown > 0f ? (targetCooldown - Time.deltaTime) : -1f;
         if (t.IsDestination)
         {
-            t.MoveToRandomPoint();
+            if (Random.Range(0, 1f) > Constant.BOT_RATION_IDLE)
+            {
+                t.MoveToRandomPoint();
+            }
+            else
+            {
+                t.ChangeState(new IdleState());
+            }
         }
-        if(t.IsHasTarget)
+        if (t.IsHasTarget && targetCooldown < 0.0001f)
         {
-            t.ChangeState(new AttackState());
+            if(Random.Range(0, 1f) > Constant.BOT_RATION_ATTACK)
+            {
+                t.ChangeState(new AttackState());
+            }
+            else
+            {
+                targetCooldown = 1f;
+            }
         }
     }
 
