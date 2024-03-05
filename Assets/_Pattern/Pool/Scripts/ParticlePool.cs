@@ -15,8 +15,12 @@ public static class ParticlePool
         {
             if (root == null)
             {
-                PoolControler controler = GameObject.FindObjectOfType<PoolControler>();
-                root = controler != null ? controler.transform : new GameObject("ParticlePool").transform;
+                root = GameObject.FindObjectOfType<PoolControler>().transform;
+                if (root == null)
+                {
+                    root = new GameObject().transform;
+                    root.name = "ParticlePool";
+                }
             }
 
             return root;
@@ -50,16 +54,6 @@ public static class ParticlePool
                 //save prefab
                 UnityEditor.Undo.RegisterCompleteObjectUndo(prefab, "Fix To Not Loop");
                 Debug.Log(prefab.name + " ~ Fix To Not Loop");
-            } 
-            
-            if (prefab.main.playOnAwake)
-            {
-                var main = prefab.main;
-                main.playOnAwake = false;
-
-                //save prefab
-                UnityEditor.Undo.RegisterCompleteObjectUndo(prefab, "Fix To Not PlayAwake");
-                Debug.Log(prefab.name + " ~ Fix To Not PlayAwake");
             }
 
             if (prefab.main.stopAction != ParticleSystemStopAction.None)
@@ -100,7 +94,7 @@ public static class ParticlePool
         }
 
         // Spawn an object from our pool
-        public void Play(Vector3 pos, Quaternion rot)
+        public void Play(Vector3 pos)
         {
             index = index + 1 < inactive.Count ? index + 1 : 0;
 
@@ -113,7 +107,7 @@ public static class ParticlePool
                 inactive.Insert(index, obj);
             }
 
-            obj.transform.SetPositionAndRotation( pos, rot);
+            obj.transform.position = pos;
             obj.Play();
         }
 
@@ -148,7 +142,7 @@ public static class ParticlePool
         Init(prefab, qty, parent);
     }
 
-    static public void Play(ParticleSystem prefab, Vector3 pos, Quaternion rot)
+    static public void Play(ParticleSystem prefab, Vector3 pos)
     {
 #if UNITY_EDITOR
         if (prefab == null)
@@ -165,10 +159,10 @@ public static class ParticlePool
             pools[prefab.GetInstanceID()] = new Pool(prefab, 10, newRoot);
         }
 
-        pools[prefab.GetInstanceID()].Play(pos, rot);
+        pools[prefab.GetInstanceID()].Play(pos);
     }
 
-    static public void Play(ParticleType particleType, Vector3 pos, Quaternion rot)
+    static public void Play(ParticleType particleType, Vector3 pos)
     {
 #if UNITY_EDITOR
         if (!shortcuts.ContainsKey(particleType))
@@ -177,7 +171,7 @@ public static class ParticlePool
         }
 #endif
 
-        Play(shortcuts[particleType], pos, rot);
+        Play(shortcuts[particleType], pos);
     }
 
     static public void Release(ParticleSystem prefab)
@@ -192,22 +186,9 @@ public static class ParticlePool
             GameObject.DestroyImmediate(prefab);
         }
     }
-    
-    static public void Release(ParticleType particleType)
-    {
-#if UNITY_EDITOR
-        if (!shortcuts.ContainsKey(particleType))
-        {
-            Debug.LogError(particleType + " is nees install at pool container!!!");
-        }
-#endif
-
-        Release(shortcuts[particleType]);
-    }
 
     static public void Shortcut(ParticleType particleType, ParticleSystem particleSystem)
     {
         shortcuts.Add(particleType, particleSystem);
     }
 }
-
