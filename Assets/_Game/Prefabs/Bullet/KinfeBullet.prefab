@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5806c6b14cfe4f2499569bca11a8befe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 5
+  poolType: 6
   speed: 20
-  render: {fileID: 6473694500402015945}
 --- !u!65 &8017029405381020145
 BoxCollider:
   m_ObjectHideFlags: 0

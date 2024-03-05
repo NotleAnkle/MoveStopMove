@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using _Framework.Pool.Scripts;
+using System.Collections;
 using System.Collections.Generic;
-using _Framework.Pool.Scripts;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,12 +8,12 @@ using UnityEngine;
 public class PoolControler : MonoBehaviour
 {
     [Header("---- POOL CONTROLER TO INIT POOL ----")]
-    //[Header("Put object pool to list Pool or Resources/Pool")]
-    //[Header("Preload: Init Poll")]
-    //[Header("Spawn: Take object from pool")]
-    //[Header("Despawn: return object to pool")]
-    //[Header("Collect: return objects type to pool")]
-    //[Header("CollectAll: return all objects to pool")]
+    [Header("Put object pool to list Pool or Resources/Pool")]
+    [Header("Preload: Init Poll")]
+    [Header("Spawn: Take object from pool")]
+    [Header("Despawn: return object to pool")]
+    [Header("Collect: return objects type to pool")]
+    [Header("CollectAll: return all objects to pool")]
 
     [Space]
     [Header("Pool")]
@@ -139,34 +139,33 @@ public class ParticleAmount
 
 public enum ParticleType
 {
-    
+    BeamUpBlue = 0,
+    BloodExplosion = 1,
 }
 
 public enum PoolType
 {
-    None = 0,
+    None,
+
+    Bot,
 
     W_Hammer,
     W_Kinfe,
     W_Boomerang,
 
-    BL_HammerBullet,
-    BL_KinfeBullet,
-    BL_BoomerangBullet,
+    BL_Hammer,
+    BL_Knife,
+    BL_Boomerang,
 
-    Bot,
-
-    P_BatMan,
-    P_ChamBi,
-    P_Comy,
-    P_DaBao,
-    P_Oninon,
-    P_Pokemon,
-    P_Rainbow,
-    P_Skull,
-    P_VanTim,
+    SKIN_Normal,
+    SKIN_Devil,
+    SKIN_Angle,
+    SKIN_Witch,
+    SKIN_Deadpool,
+    SKIN_Thor,
 
     H_Arrow,
+    H_Cap,
     H_Cowboy,
     H_Crown,
     H_Ear,

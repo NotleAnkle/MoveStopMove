@@ -303,11 +303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1b1ed04f4a6514489e5157f6e72d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolType: 0
   rightHand: {fileID: 2577821300855913195}
   leftHand: {fileID: 4918249530763340080}
   head: {fileID: 4308649338611537402}
   pant: {fileID: 589576937504261403}
   pantData: {fileID: 11400000, guid: 842396b2851fec54ea14766c786d7e55, type: 2}
+  anim: {fileID: 6591534440084263154}
   isCanChange: 1
 --- !u!1 &299691453060041459
 GameObject:
@@ -2274,17 +2276,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565b5c227ebc2714bba852b7960ff1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 7
-  anim: {fileID: 6591534440084263154}
-  model: {fileID: 3887686645380382088}
+  poolType: 1
   speed: 3
-  rightHand: {fileID: 2577821300855913195}
   currentSkin: {fileID: 959797444}
   indicatorPoint: {fileID: 774443472}
   range: 10
   targetList: []
   IsAttackable: 1
   IsDying: 0
+  killerName: 
   targetCircle: {fileID: 8109121084065814322}
   agent: {fileID: 8109121083984434812}
   attackRange: {fileID: 8109121083252963337}

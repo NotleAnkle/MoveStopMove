@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b17628e12c2a0e479fd631688d9b276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 6
+  poolType: 7
   speed: 10
-  render: {fileID: 2505006566656665250}
   curve:
     serializedVersion: 2
     m_Curve:

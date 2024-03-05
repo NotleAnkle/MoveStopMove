@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponItems:
   - icon: {fileID: 21300000, guid: 33c349a86a058c34196d38bf8d1d2ca9, type: 3}
-    type: 2
+    type: 3
     cost: 100
   - icon: {fileID: 21300000, guid: 2dbdf917bda18854c9feb89adc0a75f7, type: 3}
-    type: 1
+    type: 2
     cost: 200
   - icon: {fileID: 21300000, guid: 850560a3d5d05414985431b7fe969284, type: 3}
-    type: 3
+    type: 4
     cost: 300
