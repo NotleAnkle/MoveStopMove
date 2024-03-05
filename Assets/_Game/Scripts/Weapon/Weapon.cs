@@ -26,4 +26,9 @@ public class Weapon : GameUnit
             owner.WeaponDisable();
         }
     }
+
+    public void SetActive(bool active)
+    {
+        this.gameObject.SetActive(active);
+    }
 }

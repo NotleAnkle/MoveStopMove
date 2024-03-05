@@ -178,7 +178,7 @@ public class UserData : ScriptableObject
         playerHair = GetEnumData(Key_Player_Hair, HairType.Arrow);
         playerPant = GetEnumData(Key_Player_Pant, PantType.BatMan);
         playerAccessory = GetEnumData(Key_Player_Accessory, AccessoryType.None);
-        playerSkin = GetEnumData(Key_Player_Skin, SkinType.Norman);
+        playerSkin = GetEnumData(Key_Player_Skin, SkinType.Normal);
     }
 
     public void OnResetData()

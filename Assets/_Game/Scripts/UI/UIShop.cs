@@ -78,7 +78,6 @@ public class UIShop : UICanvas
     }
     internal void SelectItem(ShopItem item)
     {
-
         LevelManager.Instance.Player.TryCloth(curBar.Type, item.Type);
         ShopItem.State state = UserData.Ins.GetEnumData(item.Type.ToString(), ShopItem.State.Buy);
         item.SetState(state);
@@ -115,6 +114,7 @@ public class UIShop : UICanvas
 
     public void ButtonClick()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         switch (curItem.state)
         {
             case ShopItem.State.Buy:
@@ -132,6 +132,7 @@ public class UIShop : UICanvas
 
     private void OnBuyButtonClick()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         if (UserData.Ins.coin >= curItem.Cost)
         {
             int coin = UserData.Ins.coin - curItem.Cost;
@@ -145,6 +146,8 @@ public class UIShop : UICanvas
 
     private void OnEquipButtonClick()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
         if (curItem != null)
         {
             UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Equipped);
@@ -198,7 +201,8 @@ public class UIShop : UICanvas
 
     public void Back()
     {
-        UIManager.Instance.CloseUI<UIShop>();
+        CloseDirectly();
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<MainMenu>();
     }
 }

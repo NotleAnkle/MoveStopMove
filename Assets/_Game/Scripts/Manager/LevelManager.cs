@@ -90,6 +90,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         UIManager.Instance.CloseAll();
         GameManager.ChangeState(GameState.Revive);
+        SetTargetIndicatorAlpha(0);
         StartCoroutine(FailCountdown());
     }
 
@@ -105,5 +106,13 @@ public class LevelManager : Singleton<LevelManager>
         SetTargetIndicatorAlpha(0);
         UIManager.Instance.OpenUI<UIRank>().OnVictory();
         player.ChangeAnim(Constant.ANIM_DANCE_WIN);
+    }
+
+    public void OnRevive()
+    {
+        GameManager.ChangeState(GameState.GamePlay);
+        SetTargetIndicatorAlpha(1);
+        Player.OnRevive();
+        UIManager.Instance.OpenUI<PlayUI>();
     }
 }

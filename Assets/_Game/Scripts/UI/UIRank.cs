@@ -16,7 +16,7 @@ public class UIRank : UICanvas
 
     private void OnEnable()
     {
-        txtCoin.text = LevelManager.Instance.Player.Point.ToString();
+        txtCoin.text = LevelManager.Instance.Player.Score.ToString();
         UIManager.Instance.CloseUI<PlayUI>();
     }
 
@@ -24,9 +24,11 @@ public class UIRank : UICanvas
     {
         panelRank.SetActive(false);
         panelVictory.SetActive(true);
+        SoundManager.Instance.Play(AudioType.SFX_EndWin);
     }
     public void OnFail()
     {
+        SoundManager.Instance.Play(AudioType.SFX_EndLose);
         panelRank.SetActive(true);
         panelVictory.SetActive(false);
         txtRank.text = "#" + LevelManager.Instance.PlayerRank.ToString();

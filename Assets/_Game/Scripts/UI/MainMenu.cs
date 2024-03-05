@@ -18,18 +18,24 @@ namespace _UI.Scripts
         }
         public void PlayButton()
         {
+            SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
             UIManager.Instance.CloseUI<MainMenu>();
             GameManager.Instance.OnRestart();
         }
 
         public void SkinButton()
         {
+            SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
             UIManager.Instance.CloseUI<MainMenu>();
             UIManager.Instance.OpenUI<UIShop>();
         }
 
         public void WeaponButton()
         {
+            SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
             UIManager.Instance.CloseUI<MainMenu>();
             UIManager.Instance.OpenUI<UIWeaponShop>();
         }

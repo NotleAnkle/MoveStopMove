@@ -60,6 +60,8 @@ public class UIWeaponShop : UICanvas
 
     public void BuyButton()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
         int coin = Int32.Parse(txtCoin.text);
         int cost = Int32.Parse(txtCost.text);
         if (coin > cost)
@@ -71,6 +73,8 @@ public class UIWeaponShop : UICanvas
     }
     public void EquipButton()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
         UserData.Ins.SetEnumData(weaponType.ToString(), ShopItem.State.Equipped);
         UserData.Ins.SetEnumData(UserData.Ins.playerWeapon.ToString(), ShopItem.State.Bought);
         UserData.Ins.SetEnumData(UserData.Key_Player_Weapon, ref UserData.Ins.playerWeapon, weaponType);
@@ -82,15 +86,20 @@ public class UIWeaponShop : UICanvas
 
     public void Next()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
         SelectWeapon(data.NextType(weaponType));
     }
     public void Previous()
     {
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
+
         SelectWeapon(data.PrevType(weaponType));
     }
     public void Back()
     {
-        Close(0f);
+        CloseDirectly();
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<MainMenu>();
     }
 }

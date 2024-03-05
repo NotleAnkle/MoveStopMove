@@ -14,22 +14,28 @@ public class UIRevive : UICanvas
         base.Open();
         timer = 5f;
         sec.text = timer.ToString();
-        GameManager.ChangeState(GameState.Revive);
-        LevelManager.Instance.SetTargetIndicatorAlpha(0);
     }
     public void OnReject()
     {
-        UIManager.Instance.CloseUI<UIRevive>();
+        CloseDirectly();
+        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<UIRank>().OnFail();
     }
 
     public void OneSecPass()
     {
+        SoundManager.Instance.Play(AudioType.SFX_Count);
         timer -= 1f;
         sec.text = timer.ToString();
         if(timer < 0.0001f)
         {
             OnReject();
         }
+    }
+
+    public void OnAccept()
+    {
+        LevelManager.Instance.OnRevive();
+        CloseDirectly();
     }
 }

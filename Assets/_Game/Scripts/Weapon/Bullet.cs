@@ -43,8 +43,10 @@ public abstract class Bullet : GameUnit
         {
             OnDespawn();
             character.OnDeath();
-            owner.IncresingPoint(character.Point);
+            owner.IncresingPoint(character.Score);
             character.SetKillerName(owner.ownerName);
+            SoundManager.Instance.Play(AudioType.SFX_WeaponHit);
+            ParticlePool.Play(ParticleType.BloodExplosion, TF.position);
         }
     }
 
