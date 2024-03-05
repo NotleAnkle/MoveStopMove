@@ -1,6 +1,7 @@
 using _Framework;
 using _Framework.Event.Scripts;
 using _Framework.StateMachine;
+using _Game.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,14 +28,13 @@ public class Bot : Character
         curState = new IdleState();
         TurnOffTargetCircle();
         indicator.SetName(nameData.getRandomName());
+        ChangeSkin(Utilities.RandomEnumValue<SkinType>());
+        GetRandomScore();
     }
     public override void OnDeath()
     {
         base.OnDeath();
         ChangeState(new DeadState());
-
-        //LevelManager.Instance.RemoveBot(this);
-        //LevelManager.Instance.CheckLimit();
     }
     public override void OnDespawn()
     {
@@ -44,6 +44,18 @@ public class Bot : Character
     {
         base.PowerUp();
         attackRange.OnInit(this);
+    }
+    public override void EquipedCloth()
+    {
+        base.EquipedCloth();
+        WearRandomCloth();
+    }
+    public void WearRandomCloth()
+    {
+        ChangeHair(Utilities.RandomEnumValue<HairType>());
+        ChangePant(Utilities.RandomEnumValue<PantType>());
+        ChangeAccessory(Utilities.RandomEnumValue<AccessoryType>());
+        ChangeWeapon(Utilities.RandomEnumValue<WeaponType>());
     }
     #endregion
 
@@ -100,17 +112,11 @@ public class Bot : Character
 
     public void TurnOnTargetCircle()
     {
-        if (targetCircle != null)
-        {
-            targetCircle.SetActive(true);
-        }
+        targetCircle?.SetActive(true);
     }
     public void TurnOffTargetCircle()
     {
-        if (targetCircle != null)
-        {
-            targetCircle.SetActive(false);
-        }
+       targetCircle?.SetActive(false);
     }
 
     #region navmesh

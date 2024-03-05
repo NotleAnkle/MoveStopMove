@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.LightingExplorerTableColumn;
 using UnityEngine.UI;
+using _Framework.Pool.Scripts;
+using _Game.Utils;
 
-public class Skin : MonoBehaviour
+public class Skin : GameUnit
 {
     [SerializeField] private Transform rightHand;
     [SerializeField] private Transform leftHand;
@@ -12,11 +14,16 @@ public class Skin : MonoBehaviour
     [SerializeField] private Renderer pant;
     [SerializeField] private PantData pantData;
 
+    [SerializeField] private Animator anim;
+
+    public Animator Anim => anim;
+
     private Weapon currentWeapon;
     private Hair currentHair;
     private Accessory currentAccessory;
 
     public Weapon CurWeapon => currentWeapon;
+    public Transform RightHand => rightHand;
 
     [SerializeField] bool isCanChange = false;
 
@@ -70,13 +77,4 @@ public class Skin : MonoBehaviour
         if (currentWeapon) SimplePool.Despawn(currentWeapon);
     }
 
-    public void  WearEquipedCloth()
-    {
-        ChangeHair(UserData.Ins.GetEnumData(UserData.Key_Player_Hair, HairType.None));
-        ChangePant(UserData.Ins.GetEnumData(UserData.Key_Player_Pant, PantType.BatMan));
-        ChangeAccessory(UserData.Ins.GetEnumData(UserData.Key_Player_Accessory, AccessoryType.None));
-
-        ChangeWeapon(UserData.Ins.GetEnumData(UserData.Key_Player_Weapon, WeaponType.Kinfe));
-
-    }
 }

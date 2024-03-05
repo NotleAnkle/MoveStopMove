@@ -1,5 +1,6 @@
 ﻿using _Framework.Event.Scripts;
 using _UI.Scripts.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Player : Character
     [SerializeField] private FloatingJoystick joystick;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AttackRange attackRange;
+    [SerializeField] private ParticleSystem reviveVFX;
 
     private bool IsAttacking = false;
 
@@ -18,8 +20,9 @@ public class Player : Character
     {
         SumCoin();
         base.OnInit();
+        SetSize(Constant.RANGE_DEFAULT);
         attackRange.OnInit();
-        EquipedCloth();
+        EquiedSkin();
         indicator.SetName("You");
         SetRotationDefault();
     }
@@ -30,19 +33,21 @@ public class Player : Character
         attackRange.OnInit();
         float rate = (this.Range - Constant.RANGE_DEFAULT) / (Constant.RANGE_MAX - Constant.RANGE_DEFAULT);
         CameraFollower.Instance.SetRateOffset(rate);
+        SoundManager.Instance.Play(AudioType.SFX_SizeUp);
     }
 
     public override void OnDeath()
     {
         base.OnDeath();
+        SoundManager.Instance.Play(AudioType.SFX_PlayerDie);
         LevelManager.Instance.OnFail();
     }
 
-    public override void EquipedCloth()
+    public void OnRevive()
     {
-        base.EquipedCloth();
-        currentSkin.WearEquipedCloth();
-        curWeapon.OnInit(this);
+        reviveVFX.Play();
+        IsDying = false;
+        ChangeAnim(Constant.ANIM_IDLE);
     }
     #endregion
 
@@ -111,6 +116,7 @@ public class Player : Character
         if (curWeapon.IsActive && IsAttacking)
         {
             curWeapon.Throw(target);
+            SoundManager.Instance.Play(AudioType.SFX_ThrowWeapon);
         }
         IsAttacking = false;
 
@@ -121,7 +127,7 @@ public class Player : Character
     //quay mat ve phia joystick
     private void Turn()
     {
-        model.transform.forward = new Vector3(joystick.Direction.x, 0f, joystick.Direction.y);
+        currentSkin.TF.forward = new Vector3(joystick.Direction.x, 0f, joystick.Direction.y);
     }
     private Vector3 CheckGround(Vector3 nextPos)
     {
@@ -135,10 +141,52 @@ public class Player : Character
     }
     #endregion
 
+    #region skin
+    public override void EquipedCloth()
+    {
+        base.EquipedCloth();
+        WearEquipedCloth();
+        curWeapon.OnInit(this);
+    }
+    private void EquiedSkin()
+    {
+        ChangeSkin(UserData.Ins.GetEnumData(UserData.Key_Player_Skin, SkinType.Normal));
+    }
+    public void TryCloth(UIShop.ShopType shopType, Enum type)
+    {
+        switch (shopType)
+        {
+            case UIShop.ShopType.hair:
+                currentSkin.ChangeHair((HairType)type);
+                break;
+            case UIShop.ShopType.pant:
+                currentSkin.ChangePant((PantType)type);
+                break;
+            case UIShop.ShopType.accessory:
+                currentSkin.ChangeAccessory((AccessoryType)type);
+                break;
+            case UIShop.ShopType.skin:
+                ChangeSkin((SkinType)type);
+                break;
+            case UIShop.ShopType.weapon:
+                ChangeWeapon((WeaponType)type);
+                break;
+        }
+    }
+    public void WearEquipedCloth()
+    {
+        ChangeHair(UserData.Ins.GetEnumData(UserData.Key_Player_Hair, HairType.None));
+        ChangePant(UserData.Ins.GetEnumData(UserData.Key_Player_Pant, PantType.BatMan));
+        ChangeAccessory(UserData.Ins.GetEnumData(UserData.Key_Player_Accessory, AccessoryType.None));
+
+        ChangeWeapon(UserData.Ins.GetEnumData(UserData.Key_Player_Weapon, WeaponType.Kinfe));
+    }
+    #endregion
+
     private void SumCoin()
     {
         int coin = UserData.Ins.coin;
-        coin += Point;
+        coin += Score;
         UserData.Ins.SetIntData(UserData.Key_Coin,ref UserData.Ins.coin, coin);
     }
 }

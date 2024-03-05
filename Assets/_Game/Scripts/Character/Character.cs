@@ -9,17 +9,14 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class Character : GameUnit
 {
-    [SerializeField] private Animator anim;
-    [SerializeField] protected Transform model;
     [SerializeField] protected float speed = 5f;
-    [SerializeField] protected Transform rightHand;
     [SerializeField]protected Skin currentSkin;
     [SerializeField] protected Transform indicatorPoint;
 
     #region components
     [SerializeField] private float range;
-    private int point = 0;
-    public Vector3 throwPoint => rightHand.position;
+    private int score = 0;
+    public Vector3 throwPoint => currentSkin.RightHand.position;
 
     public float Range => range;
 
@@ -27,7 +24,7 @@ public class Character : GameUnit
 
     private string currentAnimName;
 
-    public int Point => point;
+    public int Score => score;
     public bool IsHasTarget => targetList.Count > 0;
     public bool IsAttackable = true;
     public bool IsDying = false;
@@ -49,10 +46,9 @@ public class Character : GameUnit
     public virtual void OnInit()
     {
         targetList.Clear();
-        model.transform.localScale = Vector3.one;
-        point = 0;
+        score = 0;
         range = Constant.RANGE_DEFAULT;
-        TryCloth(UIShop.ShopType.weapon, WeaponType.Kinfe);
+        ChangeWeapon(WeaponType.Kinfe);
         IsDying = false;
         ChangeAnim(Constant.ANIM_IDLE);
 
@@ -76,15 +72,15 @@ public class Character : GameUnit
     {
         if (currentAnimName != animName && !IsDying)
         {
-            anim.ResetTrigger(animName);
+            currentSkin.Anim.ResetTrigger(animName);
 
             if (currentAnimName != null)
             {
-                anim.ResetTrigger(currentAnimName);
+                currentSkin.Anim.ResetTrigger(currentAnimName);
             }
 
             currentAnimName = animName;
-            anim.SetTrigger(currentAnimName);
+            currentSkin.Anim.SetTrigger(currentAnimName);
         }
     }
     #endregion
@@ -109,50 +105,56 @@ public class Character : GameUnit
     }
     protected void TurnTo(Vector3 targetPos)
     {
-        model.LookAt(targetPos + (TF.position.y - targetPos.y) * Vector3.up);
+        currentSkin.TF.LookAt(targetPos + (TF.position.y - targetPos.y) * Vector3.up);
     }
     #endregion
 
-    #region skin
+    #region Skin
     public void WeaponEnable()
     {
-        curWeapon.gameObject.SetActive(true);
+        curWeapon.SetActive(true);
     }
     public void WeaponDisable()
     {
-        curWeapon.gameObject.SetActive(false);
+        curWeapon.SetActive(false);
     }
     public void SetRotationDefault()
     {
-        model.localRotation = Quaternion.identity;
+        currentSkin.TF.localRotation = Quaternion.identity;
     }
-
-    public void TryCloth(UIShop.ShopType shopType,Enum type) 
+    public void ChangeWeapon(WeaponType type)
     {
-        switch (shopType)
-        {
-            case UIShop.ShopType.hair:
-                currentSkin.ChangeHair((HairType)type);
-                break;
-            case UIShop.ShopType.pant:
-                currentSkin.ChangePant((PantType)type);
-                break;
-            case UIShop.ShopType.accessory:
-                currentSkin.ChangeAccessory((AccessoryType)type);
-                break;
-            case UIShop.ShopType.skin:
-
-                break;
-            case UIShop.ShopType.weapon:
-                currentSkin.ChangeWeapon((WeaponType)type);
-                curWeapon.OnInit(this);
-                break;
-        }
+        currentSkin.ChangeWeapon(type);
+        curWeapon.OnInit(this);
+    }
+    public void ChangeSkin(SkinType skinType)
+    {
+        TakeOffCloth();
+        currentSkin = SimplePool.Spawn<Skin>((PoolType)skinType, this.TF);
+        EquipedCloth();
     }
 
+    public void ChangeHair(HairType hairType)
+    {
+        currentSkin.ChangeHair(hairType);
+    }
+    public void ChangePant(PantType pantType)
+    {
+        currentSkin.ChangePant(pantType);
+    }
+    public void ChangeAccessory(AccessoryType accessoryType)
+    {
+        currentSkin.ChangeAccessory(accessoryType);
+    }
     public virtual void EquipedCloth()
     {
         
+    }
+
+    public void TakeOffCloth()
+    {
+        currentSkin?.OnDespawn();
+        SimplePool.Despawn(currentSkin);
     }
     #endregion
 
@@ -160,18 +162,20 @@ public class Character : GameUnit
     public void IncresingPoint(int enemyPoint)
     {
         enemyPoint = enemyPoint < 1 ? 1 : enemyPoint;
-        point += enemyPoint;
-
-        if (point % 2 == 0)
-        {
-            PowerUp();
-        }
-        indicator.SetScore(point);
+        score += enemyPoint;
+        PowerUp();
+        indicator.SetScore(score);
     }
     public virtual void PowerUp()
     {
+        ParticlePool.Play(ParticleType.BeamUpBlue, TF.position);
         range += 1;
-        model.transform.localScale = Vector3.one * range / Constant.RANGE_DEFAULT;
+        range = range > Constant.RANGE_MAX ? Constant.RANGE_MAX : range;
+        SetSize(range);
+    }
+    public void SetSize(float range)
+    {
+        currentSkin.TF.localScale = Vector3.one * range / Constant.RANGE_DEFAULT;
     }
     #endregion
 
@@ -179,6 +183,12 @@ public class Character : GameUnit
     public void SetKillerName(string name)
     {
         killerName = name;
+    }
+    protected void GetRandomScore()
+    {
+        score = UnityEngine.Random.Range(0, 10);
+        SetSize(range + score /2);
+        indicator.SetScore(score);
     }
     #endregion
 }
