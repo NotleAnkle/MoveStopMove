@@ -23,12 +23,12 @@ public class Character : GameUnit
     public int Score => score;
     public bool IsHasTarget => targetList.Count > 0;
     public bool IsAttackable => curWeapon.IsActive;
-    public bool IsDying = false;
+    public bool IsDying { get; protected set; }
 
     protected TargetIndicator indicator;
 
     public string ownerName => indicator.Name;
-    public string killerName;
+    public string killerName { get; protected set; }
     #endregion
 
     private void Awake()
