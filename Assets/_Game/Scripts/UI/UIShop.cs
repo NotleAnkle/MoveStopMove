@@ -1,4 +1,5 @@
 using _Framework;
+using _Framework.Pool.Scripts;
 using _UI.Scripts;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class UIShop : UICanvas
 {
     public enum ShopType { hair, pant, accessory, skin, weapon}
     [SerializeField] private ShopData data;
-    [SerializeField] private GameObject contentPanel;
+    [SerializeField] private GameUnit contentPanel;
 
     [SerializeField] private Text txtCoin;
     [SerializeField] private Text txtCost;
@@ -24,6 +25,8 @@ public class UIShop : UICanvas
     [SerializeField] private ShopItem prefab; 
     MiniPool<ShopItem> miniPool = new MiniPool<ShopItem>();
 
+    private Vector3 contentPanelStartPos;
+
     private void Awake()
     {
         miniPool.OnInit(prefab, 12, contentPanel.transform);
@@ -37,6 +40,8 @@ public class UIShop : UICanvas
     {
         base.Open();
         curBar = bars[0];
+        contentPanelStartPos = contentPanel.TF.position;
+
         SelectBar(curBar);
 
         txtCoin.text = UserData.Ins.coin.ToString();
@@ -48,6 +53,8 @@ public class UIShop : UICanvas
         {
             curBar.Active(false);
         }
+
+        contentPanel.TF.position = contentPanelStartPos;
 
         curBar = selectBar;
         curBar.Active(true);
