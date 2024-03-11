@@ -95,25 +95,20 @@ public class Player : Character
     }
     public void Attack()
     {
-        if (curWeapon.IsActive)
-        {
-            IsAttackable = false;
             IsAttacking = true;
             ChangeAnim(Constant.ANIM_ATTACK);
             Vector3 pos = GetFirstTargetPos();
             TurnTo(pos);
             StartCoroutine(Throw(pos));
-        }
     }
     public void CancelAttack()
     {
         IsAttacking = false;
-        IsAttackable = true;
     }
     private IEnumerator Throw(Vector3 target)
     {
         yield return new WaitForSeconds(Constant.TIME_ATTACK_DELAY);
-        if (curWeapon.IsActive && IsAttacking)
+        if (IsAttacking)
         {
             curWeapon.Throw(target);
             SoundManager.Instance.Play(AudioType.SFX_ThrowWeapon);

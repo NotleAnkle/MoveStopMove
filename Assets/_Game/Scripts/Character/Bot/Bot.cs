@@ -72,7 +72,6 @@ public class Bot : Character
     {
         if (curWeapon.IsActive)
         {
-            IsAttackable = false;
             ChangeAnim(Constant.ANIM_ATTACK);
             Vector3 pos = GetFirstTargetPos();
             TurnTo(pos);
@@ -82,10 +81,7 @@ public class Bot : Character
     private IEnumerator Throw(Vector3 target)
     {
         yield return new WaitForSeconds(Constant.TIME_ATTACK_DELAY);
-        if (curWeapon.IsActive)
-        {
             curWeapon.Throw(target);
-        }
     }
 
     public void MoveTo(Vector3 pos)

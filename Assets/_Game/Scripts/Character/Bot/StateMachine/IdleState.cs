@@ -8,7 +8,6 @@ public class IdleState : IState<Bot>
     private float timer;
     public void OnEnter(Bot t)
     {
-        t.IsAttackable = true;
         t.ChangeAnim(Constant.ANIM_IDLE);
     }
 

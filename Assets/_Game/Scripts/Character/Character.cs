@@ -19,13 +19,11 @@ public class Character : GameUnit
     private List<Character> targetList = new List<Character>();
 
     private string currentAnimName;
-
+    protected Weapon curWeapon => currentSkin.CurWeapon;
     public int Score => score;
     public bool IsHasTarget => targetList.Count > 0;
-    public bool IsAttackable = true;
+    public bool IsAttackable => curWeapon.IsActive;
     public bool IsDying = false;
-
-    protected Weapon curWeapon => currentSkin.CurWeapon;
 
     protected TargetIndicator indicator;
 
@@ -45,7 +43,7 @@ public class Character : GameUnit
         score = 0;
         range = Constant.RANGE_DEFAULT;
         IsDying = false;
-
+        ChangeWeapon(WeaponType.Kinfe);
         ChangeAnim(Constant.ANIM_IDLE);
 
         if (!indicator)
@@ -183,7 +181,8 @@ public class Character : GameUnit
     protected void GetRandomScore()
     {
         score = UnityEngine.Random.Range(0, 10);
-        SetSize(range + score /2);
+        range += score / 2;
+        SetSize(range);
         indicator.SetScore(score);
     }
     #endregion
