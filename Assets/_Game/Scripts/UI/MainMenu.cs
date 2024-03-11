@@ -10,8 +10,8 @@ namespace _UI.Scripts
         public override void Open()
         {
             base.Open();
-            SimplePool.Collect(PoolType.Bot);
             LevelManager.Instance.OnReset();
+            GameManager.ChangeState(GameState.MainMenu);
             CameraFollower.Instance.ChangeState(CameraFollower.State.MainMenu);
 
             txtCoin.text = UserData.Ins.coin.ToString();

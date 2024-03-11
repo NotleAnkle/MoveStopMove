@@ -19,12 +19,15 @@ public class LevelManager : Singleton<LevelManager>
 
     private int botNumber = 50;
 
+    public int BotNumberLeft => botNumber + bots.Count;
+
     public int PlayerRank;
     public string PlayerKiller;
 
+    //dang ky event
     private void Awake()
     {
-        this.RegisterListener(EventID.OnCharacterDie, (param) => CheckLimit((Character)param));
+        this.RegisterListener(EventID.OnCharacterDie, (param) => CheckCharacter((Character)param));
     }
 
     public void OnInit() 
@@ -36,37 +39,35 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void OnReset()
     {
+        SetTargetIndicatorAlpha(0);
+        SimplePool.Collect(PoolType.Bot);
         player.OnInit();
         bots.Clear();
         botNumber = 50;
     }
 
-    public void CheckLimit(Character character)
+    //kiem tra character duoc event tra ve
+    public void CheckCharacter(Character character)
     {
         if (character != player)
         {
             bots.Remove((Bot)character);
-        }
-        else
-        {
-            PlayerRank = bots.Count + botNumber;
-        }
-        if (GameManager.IsState(GameState.GamePlay))
-        {
-            if(botNumber > 1)
+            if (botNumber > 1)
             {
                 SpawnBot();
             }
             else
             {
-                if(bots.Count < 1)
+                if (bots.Count < 1)
                 {
                     OnVictory();
                 }
             }
         }
-        
-        
+        else
+        {
+            PlayerRank = bots.Count + botNumber;
+        }        
     }
     private void SpawnBot()
     {
@@ -90,10 +91,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         UIManager.Instance.CloseAll();
         GameManager.ChangeState(GameState.Revive);
-        SetTargetIndicatorAlpha(0);
         StartCoroutine(FailCountdown());
     }
-
     private IEnumerator FailCountdown()
     {
         yield return new WaitForSeconds(0.5f);
@@ -103,7 +102,6 @@ public class LevelManager : Singleton<LevelManager>
     public void OnVictory()
     {
         GameManager.ChangeState(GameState.Revive);
-        SetTargetIndicatorAlpha(0);
         UIManager.Instance.OpenUI<UIRank>().OnVictory();
         player.ChangeAnim(Constant.ANIM_DANCE_WIN);
     }

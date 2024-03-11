@@ -1,13 +1,8 @@
 using _Framework;
 using _UI.Scripts;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UIShop;
-using static UnityEditor.LightingExplorerTableColumn;
-using static UnityEditor.Progress;
 
 public class UIShop : UICanvas
 {
@@ -194,13 +189,14 @@ public class UIShop : UICanvas
             if(item.state == ShopItem.State.Equipped)
             {
                 itemEquiped = item;
-                SelectItem(itemEquiped);
+                item.SetState(ShopItem.State.Equipped);
             }
         }
     }
 
     public void Back()
     {
+        curBar.Active(false);
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<MainMenu>();

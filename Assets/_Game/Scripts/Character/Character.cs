@@ -1,11 +1,7 @@
 ﻿using _Framework.Event.Scripts;
 using _Framework.Pool.Scripts;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
 
 public class Character : GameUnit
 {
@@ -14,13 +10,13 @@ public class Character : GameUnit
     [SerializeField] protected Transform indicatorPoint;
 
     #region components
-    [SerializeField] private float range;
+    private float range;
     private int score = 0;
     public Vector3 throwPoint => currentSkin.RightHand.position;
 
     public float Range => range;
 
-    [SerializeField] private List<Character> targetList = new List<Character>();
+    private List<Character> targetList = new List<Character>();
 
     private string currentAnimName;
 
@@ -48,8 +44,8 @@ public class Character : GameUnit
         targetList.Clear();
         score = 0;
         range = Constant.RANGE_DEFAULT;
-        ChangeWeapon(WeaponType.Kinfe);
         IsDying = false;
+
         ChangeAnim(Constant.ANIM_IDLE);
 
         if (!indicator)

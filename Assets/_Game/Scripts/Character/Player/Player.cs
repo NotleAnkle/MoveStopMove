@@ -124,7 +124,7 @@ public class Player : Character
         Idle();
     }
 
-    //quay mat ve phia joystick
+    //quay model theo joystick
     private void Turn()
     {
         currentSkin.TF.forward = new Vector3(joystick.Direction.x, 0f, joystick.Direction.y);
