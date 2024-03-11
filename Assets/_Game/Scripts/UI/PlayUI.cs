@@ -1,4 +1,5 @@
 using _Framework.Event.Scripts;
+using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,21 +12,19 @@ public class PlayUI : UICanvas
     private int botNumberLeft = 50;
     float timer = 0f;
 
+    //dang ky event
     private void Awake()
     {
-        RegisterEvent();
+        this.RegisterListener(EventID.OnCharacterDie, _ => OnBotDie());
     }
 
-    private void OnEnable()
+    public override void Open()
     {
-        botNumberLeft = 50;
+        base.Open();
+        botNumberLeft = LevelManager.Instance.BotNumberLeft;
         botNumberText.text = "Alive: " + botNumberLeft;
         LevelManager.Instance.SetTargetIndicatorAlpha(1);
-    }
-
-    private void RegisterEvent()
-    {
-        this.RegisterListener(EventID.OnCharacterDie, _ => OnBotDie());
+        GameManager.ChangeState(GameState.GamePlay);
     }
 
     private void OnBotDie()
@@ -48,5 +47,11 @@ public class PlayUI : UICanvas
                 tutorial.SetActive(true);
             }
         }
+    }
+
+    public void OnSettingButtonClick()
+    {
+        CloseDirectly();
+        UIManager.Instance.OpenUI<UISetting>();
     }
 }

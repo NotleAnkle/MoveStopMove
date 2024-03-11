@@ -20,6 +20,8 @@ public class SoundManager : Singleton<SoundManager>
 
     [SerializeField] private List<AudioSource> audioSources = new List<AudioSource>();
 
+    private bool isSoundOn => UserData.Ins.soundIsOn;
+
     private void Start()
     {
         for (int i = 0; i < clips.Count; i++)
@@ -37,6 +39,8 @@ public class SoundManager : Singleton<SoundManager>
     }
     public void Play(AudioType type)
     {
-        audioSources[(int)type]?.Play();
+        if(isSoundOn) {
+            audioSources[(int)type]?.Play();
+        }   
     }
 }
