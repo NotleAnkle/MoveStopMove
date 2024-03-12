@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
   data: {fileID: 11400000, guid: 0161e370b2e693d47b79ed010bab6812, type: 2}
-  contentPanel: {fileID: 1235891464231688241}
+  contentPanel: {fileID: 1553968181150610329}
   txtCoin: {fileID: 3550162616821271165}
   txtCost: {fileID: 3131588092688463349}
   bars:

@@ -16,13 +16,16 @@ public class Player : Character
     private bool IsAttacking = false;
 
     #region override
+    private void Start()
+    {
+        EquipedCloth();
+    }
     public override void OnInit()
     {
         SumCoin();
         base.OnInit();
         SetSize(Constant.RANGE_DEFAULT);
         attackRange.OnInit();
-        EquiedSkin();
         indicator.SetName("You");
         SetRotationDefault();
     }
@@ -140,41 +143,42 @@ public class Player : Character
     public override void EquipedCloth()
     {
         base.EquipedCloth();
+        ChangeSkin(UserData.Ins.playerSkin);
         WearEquipedCloth();
-        curWeapon.OnInit(this);
-    }
-    private void EquiedSkin()
-    {
-        ChangeSkin(UserData.Ins.GetEnumData(UserData.Key_Player_Skin, SkinType.Normal));
     }
     public void TryCloth(UIShop.ShopType shopType, Enum type)
     {
         switch (shopType)
         {
             case UIShop.ShopType.hair:
+                currentSkin.DespawnHair();
                 currentSkin.ChangeHair((HairType)type);
                 break;
             case UIShop.ShopType.pant:
                 currentSkin.ChangePant((PantType)type);
                 break;
             case UIShop.ShopType.accessory:
+                currentSkin.DespawnAccessory();
                 currentSkin.ChangeAccessory((AccessoryType)type);
                 break;
             case UIShop.ShopType.skin:
+                TakeOffCloth();
                 ChangeSkin((SkinType)type);
+                WearEquipedCloth();
                 break;
             case UIShop.ShopType.weapon:
+                currentSkin.DespawnWeapon();
                 ChangeWeapon((WeaponType)type);
                 break;
         }
     }
     public void WearEquipedCloth()
     {
-        ChangeHair(UserData.Ins.GetEnumData(UserData.Key_Player_Hair, HairType.None));
-        ChangePant(UserData.Ins.GetEnumData(UserData.Key_Player_Pant, PantType.BatMan));
-        ChangeAccessory(UserData.Ins.GetEnumData(UserData.Key_Player_Accessory, AccessoryType.None));
+        ChangeHair(UserData.Ins.playerHair);
+        ChangePant(UserData.Ins.playerPant);
+        ChangeAccessory(UserData.Ins.playerAccessory);
 
-        ChangeWeapon(UserData.Ins.GetEnumData(UserData.Key_Player_Weapon, WeaponType.Kinfe));
+        ChangeWeapon(UserData.Ins.playerWeapon);
     }
     #endregion
 

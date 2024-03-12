@@ -22,13 +22,13 @@ public class Bot : Character
     #region override
     public override void OnInit()
     {
+        EquipedCloth();
         base.OnInit();
         attackRange.OnInit(this);
         agent.speed = speed;
         curState = new IdleState();
         TurnOffTargetCircle();
         indicator.SetName(nameData.getRandomName());
-        ChangeSkin(Utilities.RandomEnumValue<SkinType>());
         GetRandomScore();
     }
     public override void OnDeath()
@@ -38,6 +38,7 @@ public class Bot : Character
     }
     public override void OnDespawn()
     {
+        base.OnDespawn();
         SimplePool.Despawn(this);
     }
     public override void PowerUp()
@@ -52,6 +53,7 @@ public class Bot : Character
     }
     public void WearRandomCloth()
     {
+        ChangeSkin(Utilities.RandomEnumValue<SkinType>());
         ChangeHair(Utilities.RandomEnumValue<HairType>());
         ChangePant(Utilities.RandomEnumValue<PantType>());
         ChangeAccessory(Utilities.RandomEnumValue<AccessoryType>());

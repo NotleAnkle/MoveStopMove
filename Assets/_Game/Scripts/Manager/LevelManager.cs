@@ -39,11 +39,11 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void OnReset()
     {
-        SetTargetIndicatorAlpha(0);
-        SimplePool.Collect(PoolType.Bot);
+        DespawnBot();
         player.OnInit();
         bots.Clear();
         botNumber = 50;
+        SetTargetIndicatorAlpha(0);
     }
 
     //kiem tra character duoc event tra ve
@@ -112,5 +112,13 @@ public class LevelManager : Singleton<LevelManager>
         SetTargetIndicatorAlpha(1);
         Player.OnRevive();
         UIManager.Instance.OpenUI<PlayUI>();
+    }
+
+    private void DespawnBot()
+    {
+        for(int i = 0; i < bots.Count; i++)
+        {
+            bots[i].OnDespawn();
+        }
     }
 }

@@ -18,18 +18,17 @@ public class Skin : GameUnit
 
     public Animator Anim => anim;
 
-    private Weapon currentWeapon;
-    private Hair currentHair;
-    private Accessory currentAccessory;
+    [SerializeField] private Weapon currentWeapon;
+    [SerializeField] private Hair currentHair;
+    [SerializeField] private Accessory currentAccessory;
 
-    public Weapon CurWeapon => currentWeapon;
+    [SerializeField] public Weapon CurWeapon => currentWeapon;
     public Transform RightHand => rightHand;
 
     [SerializeField] bool isCanChange = false;
 
     public void ChangeWeapon(WeaponType weaponType)
     {
-        DespawnWeapon();
         currentWeapon = SimplePool.Spawn<Weapon>((PoolType)weaponType, rightHand);
     }
 
@@ -37,7 +36,6 @@ public class Skin : GameUnit
     {
         if (isCanChange && accessoryType != AccessoryType.None)
         {
-            DespawnAccessory();
             currentAccessory = SimplePool.Spawn<Accessory>((PoolType)accessoryType, leftHand);
         }
     }
@@ -46,7 +44,6 @@ public class Skin : GameUnit
     {
         if (isCanChange && hatType != HairType.None)
         {
-            DespawnHair();
             currentHair = SimplePool.Spawn<Hair>((PoolType)hatType, head);
         }
     }
@@ -58,9 +55,9 @@ public class Skin : GameUnit
 
     public void OnDespawn()
     {
-        SimplePool.Despawn(currentWeapon);
-        if (currentAccessory) SimplePool.Despawn(currentAccessory);
-        if (currentHair) SimplePool.Despawn(currentHair);
+        DespawnWeapon();
+        DespawnHair();
+        DespawnAccessory();
     }
 
     public void DespawnHair()

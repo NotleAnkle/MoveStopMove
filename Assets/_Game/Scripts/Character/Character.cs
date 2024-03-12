@@ -43,7 +43,6 @@ public class Character : GameUnit
         score = 0;
         range = Constant.RANGE_DEFAULT;
         IsDying = false;
-        ChangeWeapon(WeaponType.Kinfe);
         ChangeAnim(Constant.ANIM_IDLE);
 
         if (!indicator)
@@ -61,6 +60,7 @@ public class Character : GameUnit
     }
     public virtual void OnDespawn()
     {
+        TakeOffCloth();
     }
     public void ChangeAnim(string animName)
     {
@@ -123,9 +123,7 @@ public class Character : GameUnit
     }
     public void ChangeSkin(SkinType skinType)
     {
-        TakeOffCloth();
         currentSkin = SimplePool.Spawn<Skin>((PoolType)skinType, this.TF);
-        EquipedCloth();
     }
 
     public void ChangeHair(HairType hairType)
