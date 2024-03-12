@@ -29,7 +29,7 @@ public class UIShop : UICanvas
 
     private void Awake()
     {
-        miniPool.OnInit(prefab, 12, contentPanel.transform);
+        miniPool.OnInit(prefab, 12, contentPanel.TF);
 
         for (int i = 0; i < bars.Length; i++)
         {
@@ -207,5 +207,8 @@ public class UIShop : UICanvas
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<MainMenu>();
+
+        LevelManager.Instance.Player.TakeOffCloth();
+        LevelManager.Instance.Player.EquipedCloth();
     }
 }
