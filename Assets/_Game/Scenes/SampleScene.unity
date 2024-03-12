@@ -633,7 +633,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 0
   speed: 5
-  currentSkin: {fileID: 8296172668862016662}
+  currentSkin: {fileID: 0}
   indicatorPoint: {fileID: 1192800552}
   joystick: {fileID: 495706718}
   groundLayer:

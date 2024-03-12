@@ -174,8 +174,8 @@ public class UserData : ScriptableObject
         soundIsOn =  PlayerPrefs.GetInt(Key_SoundIsOn, 0) == 1;
         vibrate =  PlayerPrefs.GetInt(Key_Vibrate, 0) == 1;
 
-        playerWeapon = GetEnumData(Key_Player_Weapon, WeaponType.Hammer);
-        playerHair = GetEnumData(Key_Player_Hair, HairType.Arrow);
+        playerWeapon = GetEnumData(Key_Player_Weapon, WeaponType.Kinfe);
+        playerHair = GetEnumData(Key_Player_Hair, HairType.None);
         playerPant = GetEnumData(Key_Player_Pant, PantType.BatMan);
         playerAccessory = GetEnumData(Key_Player_Accessory, AccessoryType.None);
         playerSkin = GetEnumData(Key_Player_Skin, SkinType.Normal);
