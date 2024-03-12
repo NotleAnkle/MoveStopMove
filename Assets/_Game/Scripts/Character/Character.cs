@@ -178,10 +178,16 @@ public class Character : GameUnit
     }
     protected void GetRandomScore()
     {
+        //random diem tu 0 - 10
         score = UnityEngine.Random.Range(0, 10);
-        range += score / 2;
-        SetSize(range);
         indicator.SetScore(score);
+
+        //random size tu 1 - 1.5 player
+        float playerRange = LevelManager.Instance.Player.Range;
+        float addedRange = playerRange - Constant.RANGE_DEFAULT;
+
+        range += Random.Range(addedRange, addedRange*1.5f);
+        SetSize(range);
     }
     #endregion
 }
