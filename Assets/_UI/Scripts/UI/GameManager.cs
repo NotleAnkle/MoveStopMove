@@ -51,6 +51,12 @@ namespace _UI.Scripts.UI
         private void Start()
         {
             UIManager.Instance.OpenUI<MainMenu>();
+
+            if(PlayerPrefs.GetInt("firstTime", 1) == 1)
+            {
+                UserData.Ins.OnResetData();
+                PlayerPrefs.SetInt("firstTime", 0);
+            }
         }
 
         public void OnRestart()

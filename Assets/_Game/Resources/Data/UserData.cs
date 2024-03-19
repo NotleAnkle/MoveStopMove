@@ -167,7 +167,7 @@ public class UserData : ScriptableObject
 #endif
 
         level = PlayerPrefs.GetInt(Key_Level, 0);
-        coin = PlayerPrefs.GetInt(Key_Coin, 0);
+        coin = PlayerPrefs.GetInt(Key_Coin, 1000);
 
         removeAds = PlayerPrefs.GetInt(Key_RemoveAds, 0) == 1;
         tutorialed =  PlayerPrefs.GetInt(Key_Tutorial, 0) == 1;
@@ -179,6 +179,10 @@ public class UserData : ScriptableObject
         playerPant = GetEnumData(Key_Player_Pant, PantType.BatMan);
         playerAccessory = GetEnumData(Key_Player_Accessory, AccessoryType.None);
         playerSkin = GetEnumData(Key_Player_Skin, SkinType.Normal);
+
+        SetEnumData(WeaponType.Kinfe.ToString(), ShopItem.State.Equipped);
+        SetEnumData(PantType.BatMan.ToString(), ShopItem.State.Equipped);
+        SetEnumData(SkinType.Normal.ToString(), ShopItem.State.Equipped);
     }
 
     public void OnResetData()
@@ -212,7 +216,12 @@ public class UserDataEditor : Editor
             userData.OnInitData();
             EditorUtility.SetDirty(userData);
         }
-       
+
+        if (GUILayout.Button("Reset Data"))
+        {
+            userData.OnResetData();
+        }
+
     }
 }
 
