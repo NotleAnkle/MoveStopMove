@@ -18,9 +18,9 @@ public class Skin : GameUnit
 
     public Animator Anim => anim;
 
-    [SerializeField] private Weapon currentWeapon;
-    [SerializeField] private Hair currentHair;
-    [SerializeField] private Accessory currentAccessory;
+    private Weapon currentWeapon;
+    private Hair currentHair;
+    private Accessory currentAccessory;
 
     [SerializeField] public Weapon CurWeapon => currentWeapon;
     public Transform RightHand => rightHand;

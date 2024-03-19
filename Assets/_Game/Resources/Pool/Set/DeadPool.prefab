@@ -52,6 +52,9 @@ MonoBehaviour:
   pant: {fileID: 485959191667523541}
   pantData: {fileID: 11400000, guid: 842396b2851fec54ea14766c786d7e55, type: 2}
   anim: {fileID: 6190538471679994428}
+  currentWeapon: {fileID: 0}
+  currentHair: {fileID: 0}
+  currentAccessory: {fileID: 0}
   isCanChange: 0
 --- !u!1001 &9086437757760151151
 PrefabInstance:
@@ -129,6 +132,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9086437758949418409}
     m_Modifications:
+    - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
