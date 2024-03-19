@@ -90,6 +90,10 @@ public class UIShop : UICanvas
                 SetButton(0);
                 txtCost.text = item.Cost.ToString();
                 break;
+            case ShopItem.State.Try:
+                SetButton(0);
+                txtCost.text = item.Cost.ToString();
+                break;
             case ShopItem.State.Bought:
                 SetButton(1);
                 break;
@@ -151,35 +155,64 @@ public class UIShop : UICanvas
             UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Equipped);
             if (itemEquiped)
             {
-                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Bought);
-                itemEquiped.SetState(ShopItem.State.Bought);
-                itemEquiped = curItem;
+                ResetEquippingItem();
             }
-            switch (shopType)
-            {
-                case ShopType.hair:
-                    //save id do moi vao player
-                    UserData.Ins.SetEnumData(UserData.Key_Player_Hair, ref UserData.Ins.playerHair, (HairType)curItem.Type);
-                    break;
-                case ShopType.pant:
-                    UserData.Ins.SetEnumData(UserData.Key_Player_Pant, ref UserData.Ins.playerPant, (PantType)curItem.Type);
-                    break;
-                case ShopType.accessory:
-                    UserData.Ins.SetEnumData(UserData.Key_Player_Accessory, ref UserData.Ins.playerAccessory, (AccessoryType)curItem.Type);
-                    break;
-                case ShopType.skin:
-                    UserData.Ins.SetEnumData(UserData.Key_Player_Skin, ref UserData.Ins.playerSkin, (SkinType)curItem.Type);
-                    break;
-                case ShopType.weapon:
-                    break;
-                default:
-                    break;
-            }
+            SavePlayerSkinData();
             SelectItem(itemEquiped);
             SetButton(2);
         }
     }
 
+    private void SavePlayerSkinData()
+    {
+        switch (shopType)
+        {
+            case ShopType.hair:
+                //save id do moi vao player
+                UserData.Ins.SetEnumData(UserData.Key_Player_Hair, ref UserData.Ins.playerHair, (HairType)curItem.Type);
+                break;
+            case ShopType.pant:
+                UserData.Ins.SetEnumData(UserData.Key_Player_Pant, ref UserData.Ins.playerPant, (PantType)curItem.Type);
+                break;
+            case ShopType.accessory:
+                UserData.Ins.SetEnumData(UserData.Key_Player_Accessory, ref UserData.Ins.playerAccessory, (AccessoryType)curItem.Type);
+                break;
+            case ShopType.skin:
+                UserData.Ins.SetEnumData(UserData.Key_Player_Skin, ref UserData.Ins.playerSkin, (SkinType)curItem.Type);
+                break;
+            case ShopType.weapon:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void OnTryButtonClick()
+    {
+        ResetEquippingItem();
+        curItem.SetState(ShopItem.State.Try);
+        UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Try);
+        SavePlayerSkinData();
+    }
+
+    private void ResetEquippingItem()
+    {
+        if (itemEquiped)
+        {
+            if (itemEquiped.state == ShopItem.State.Equipped)
+            {
+                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Bought);
+                itemEquiped.SetState(ShopItem.State.Bought);
+            }
+            else
+            {
+                //itemEquiped.state == ShopItem.State.Try
+                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Buy);
+                itemEquiped.SetState(ShopItem.State.Buy);
+            }
+        }
+        itemEquiped = curItem;
+    }
     private void InitItemFrames<T>(List<ShopItemData<T>> items) where T : System.Enum
     {
         // Tat nut buy/equip/equipped
@@ -191,10 +224,9 @@ public class UIShop : UICanvas
             item.SetState(state);
             item.SetData<T>(items[i], this);
 
-            if(item.state == ShopItem.State.Equipped)
+            if(item.state == ShopItem.State.Equipped || item.state == ShopItem.State.Try)
             {
                 itemEquiped = item;
-                item.SetState(ShopItem.State.Equipped);
                 SetButtonState(item);
             }
         }

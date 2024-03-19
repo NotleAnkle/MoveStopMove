@@ -1817,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3131588091873182548
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2466,9 +2466,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIWeaponShop, Assembly-CSharp
-        m_MethodName: BuyButton
+      - m_Target: {fileID: 1235891465265921096}
+        m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
+        m_MethodName: OnTryButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
