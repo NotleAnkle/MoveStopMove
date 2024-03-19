@@ -25,7 +25,7 @@ public class Constant
 
 public enum PantType
 {
-    BatMan ,
+    BatMan = 0,
     ChamBi ,
     Comy,
     DaBao,

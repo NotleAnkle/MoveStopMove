@@ -145,26 +145,26 @@ public enum ParticleType
 
 public enum PoolType
 {
-    None,
+    None = 0,
 
-    Bot,
+    Bot = 1,
 
-    W_Hammer,
+    W_Hammer = 10,
     W_Kinfe,
     W_Boomerang,
 
-    BL_Hammer,
+    BL_Hammer = 30,
     BL_Knife,
     BL_Boomerang,
 
-    SKIN_Normal,
+    SKIN_Normal = 50,
     SKIN_Devil,
     SKIN_Angle,
     SKIN_Witch,
     SKIN_Deadpool,
     SKIN_Thor,
 
-    H_Arrow,
+    H_Arrow = 70,
     H_Cap,
     H_Cowboy,
     H_Crown,
@@ -178,10 +178,10 @@ public enum PoolType
     H_Horn,
     H_Rau,
 
-    ACC_Shield_1,
+    ACC_Shield_1 = 90,
     ACC_Shield_2,
 
-    TargetIndicator,
+    TargetIndicator = 100,
 }
 
 

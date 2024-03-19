@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1b1ed04f4a6514489e5157f6e72d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 13
+  poolType: 55
   rightHand: {fileID: 4671514464211805051}
   leftHand: {fileID: 2833870913666248864}
   head: {fileID: 6402336129578404970}

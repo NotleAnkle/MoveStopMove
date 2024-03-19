@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
 {
-    public enum State { Buy, Bought, Equipped, Try}
+    public enum State { Buy = 0, Bought = 1, Equipped = 2, Try = 3}
     [SerializeField] private Image img;
     [SerializeField] private GameObject lockImg;
     [SerializeField] private GameObject equipImg;

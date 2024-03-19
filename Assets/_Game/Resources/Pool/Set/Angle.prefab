@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1b1ed04f4a6514489e5157f6e72d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 10
+  poolType: 52
   rightHand: {fileID: 4124473917727572635}
   leftHand: {fileID: 6825891466524938560}
   head: {fileID: 2391468862452149642}

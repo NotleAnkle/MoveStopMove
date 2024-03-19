@@ -45,16 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1b1ed04f4a6514489e5157f6e72d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 12
+  poolType: 54
   rightHand: {fileID: 3266977276229206053}
   leftHand: {fileID: 5391303213430903806}
   head: {fileID: 3844813940461694772}
   pant: {fileID: 485959191667523541}
   pantData: {fileID: 11400000, guid: 842396b2851fec54ea14766c786d7e55, type: 2}
   anim: {fileID: 6190538471679994428}
-  currentWeapon: {fileID: 0}
-  currentHair: {fileID: 0}
-  currentAccessory: {fileID: 0}
   isCanChange: 0
 --- !u!1001 &9086437757760151151
 PrefabInstance:

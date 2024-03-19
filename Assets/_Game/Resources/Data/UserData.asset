@@ -18,9 +18,9 @@ MonoBehaviour:
   vibrate: 0
   removeAds: 0
   tutorialed: 0
-  playerWeapon: 3
+  playerWeapon: 11
   playerHair: 0
   playerPant: 0
   playerAccessory: 0
-  playerSkin: 8
+  playerSkin: 50
   isTest: 0

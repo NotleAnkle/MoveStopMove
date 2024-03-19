@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840daa2e60655b44a9e2082ae4d8c02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 29
+  poolType: 100
   rect: {fileID: 3292680289433788528}
   iconImg: {fileID: 3292680289465930142}
   directImg: {fileID: 3292680289846562419}
