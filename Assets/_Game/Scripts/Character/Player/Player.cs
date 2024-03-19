@@ -28,6 +28,7 @@ public class Player : Character
         attackRange.OnInit();
         indicator.SetName("You");
         SetRotationDefault();
+        TakeOffTryClothes();
     }
 
     public override void PowerUp()
@@ -44,6 +45,7 @@ public class Player : Character
         base.OnDeath();
         SoundManager.Instance.Play(AudioType.SFX_PlayerDie);
         LevelManager.Instance.OnFail();
+
     }
 
     public void OnRevive()
@@ -172,13 +174,26 @@ public class Player : Character
                 break;
         }
     }
+
+    private HairType hairType;
+    private PantType pantType;
+    private AccessoryType accessoryType;
+    private SkinType skinType;
+
     public void WearEquipedCloth()
     {
-        ChangeHair(UserData.Ins.playerHair);
-        ChangePant(UserData.Ins.playerPant);
-        ChangeAccessory(UserData.Ins.playerAccessory);
+        hairType = UserData.Ins.playerHair;
+        ChangeHair(hairType);
+
+        pantType = UserData.Ins.playerPant;
+        ChangePant(pantType);
+
+        accessoryType = UserData.Ins.playerAccessory;
+        ChangeAccessory(accessoryType);
 
         ChangeWeapon(UserData.Ins.playerWeapon);
+
+        skinType = UserData.Ins.playerSkin;
     }
     #endregion
 
@@ -187,5 +202,38 @@ public class Player : Character
         int coin = UserData.Ins.coin;
         coin += Score;
         UserData.Ins.SetIntData(UserData.Key_Coin,ref UserData.Ins.coin, coin);
+    }
+    private void TakeOffTryClothes()
+    {
+        if (isTry(hairType))
+        {
+            UserData.Ins.SetEnumData(hairType.ToString(), ShopItem.State.Buy);
+            currentSkin.DespawnHair();
+            UserData.Ins.SetEnumData(UserData.Key_Player_Hair, ref UserData.Ins.playerHair, HairType.None);
+        }
+        if (isTry(pantType))
+        {
+            UserData.Ins.SetEnumData(pantType.ToString(), ShopItem.State.Buy);
+            ChangePant(PantType.BatMan);
+            UserData.Ins.SetEnumData(UserData.Key_Player_Pant, ref UserData.Ins.playerPant, PantType.BatMan);
+        }
+        if (isTry(accessoryType))
+        {
+            UserData.Ins.SetEnumData(accessoryType.ToString(), ShopItem.State.Buy);
+            currentSkin.DespawnAccessory();
+            UserData.Ins.SetEnumData(UserData.Key_Player_Accessory, ref UserData.Ins.playerAccessory, AccessoryType.None);
+        }
+        if (isTry(skinType))
+        {
+            UserData.Ins.SetEnumData(skinType.ToString(), ShopItem.State.Buy);
+            TakeOffCloth();
+            UserData.Ins.SetEnumData(UserData.Key_Player_Skin, ref UserData.Ins.playerSkin, SkinType.Normal);
+            ChangeSkin(SkinType.Normal);
+            WearEquipedCloth();
+        }
+    }
+    private bool isTry(Enum type)
+    {
+        return (UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Buy) == ShopItem.State.Try);
     }
 }
