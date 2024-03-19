@@ -14,10 +14,13 @@ public class UIRank : UICanvas
     [SerializeField] private GameObject panelRank;
     [SerializeField] private GameObject panelVictory;
 
+    [SerializeField] private Button btnTriple;
+
     private void OnEnable()
     {
         txtCoin.text = LevelManager.Instance.Player.Score.ToString();
         UIManager.Instance.CloseUI<PlayUI>();
+        btnTriple.interactable = true;
     }
 
     public void OnVictory()
@@ -39,5 +42,13 @@ public class UIRank : UICanvas
     {
         UIManager.Instance.CloseUI<UIRank>();
         UIManager.Instance.OpenUI<MainMenu>();
+    }
+
+    public void OnTripleButtonClick()
+    {
+        //+ Xem quang cao
+        LevelManager.Instance.Player.TripleScore();
+        txtCoin.text = LevelManager.Instance.Player.Score.ToString();
+        btnTriple.interactable = false;
     }
 }

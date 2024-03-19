@@ -203,7 +203,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3696049021212825183}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942996105820233161}
+        m_TargetAssemblyTypeName: UIRank, Assembly-CSharp
+        m_MethodName: OnTripleButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &736294301076242133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1124,7 @@ MonoBehaviour:
   txtCoin: {fileID: 2785147216904920930}
   panelRank: {fileID: 6367912090220422123}
   panelVictory: {fileID: 7644569238293174272}
+  btnTriple: {fileID: 8476602834571784061}
 --- !u!1 &6276990823437679464
 GameObject:
   m_ObjectHideFlags: 0

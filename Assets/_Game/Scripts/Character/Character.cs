@@ -11,7 +11,7 @@ public class Character : GameUnit
 
     #region components
     private float range;
-    private int score = 0;
+    protected int score = 0;
     public Vector3 throwPoint => currentSkin.RightHand.position;
 
     public float Range => range;

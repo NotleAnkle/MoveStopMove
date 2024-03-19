@@ -180,6 +180,7 @@ public class Player : Character
     private AccessoryType accessoryType;
     private SkinType skinType;
 
+    //Mac trang bi duoc luu
     public void WearEquipedCloth()
     {
         hairType = UserData.Ins.playerHair;
@@ -195,14 +196,7 @@ public class Player : Character
 
         skinType = UserData.Ins.playerSkin;
     }
-    #endregion
-
-    private void SumCoin()
-    {
-        int coin = UserData.Ins.coin;
-        coin += Score;
-        UserData.Ins.SetIntData(UserData.Key_Coin,ref UserData.Ins.coin, coin);
-    }
+    //Thao cac trang bi thu(try)
     private void TakeOffTryClothes()
     {
         if (isTry(hairType))
@@ -236,4 +230,19 @@ public class Player : Character
     {
         return (UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Buy) == ShopItem.State.Try);
     }
+    #endregion
+
+    #region other
+    private void SumCoin()
+    {
+        int coin = UserData.Ins.coin;
+        coin += Score;
+        UserData.Ins.SetIntData(UserData.Key_Coin,ref UserData.Ins.coin, coin);
+    }
+
+    public void TripleScore()
+    {
+        score *= 3;
+    }
+    #endregion
 }
