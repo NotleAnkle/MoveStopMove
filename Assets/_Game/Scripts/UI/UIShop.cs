@@ -4,12 +4,13 @@ using _UI.Scripts;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class UIShop : UICanvas
 {
     public enum ShopType { hair, pant, accessory, skin, weapon}
     [SerializeField] private ShopData data;
-    [SerializeField] private GameUnit contentPanel;
+    [SerializeField] private Transform contentPanel;
 
     [SerializeField] private Text txtCoin;
     [SerializeField] private Text txtCost;
@@ -25,11 +26,9 @@ public class UIShop : UICanvas
     [SerializeField] private ShopItem prefab; 
     MiniPool<ShopItem> miniPool = new MiniPool<ShopItem>();
 
-    private Vector3 contentPanelStartPos;
-
     private void Awake()
     {
-        miniPool.OnInit(prefab, 12, contentPanel.TF);
+        miniPool.OnInit(prefab, 12, contentPanel);
 
         for (int i = 0; i < bars.Length; i++)
         {
@@ -40,11 +39,9 @@ public class UIShop : UICanvas
     {
         base.Open();
         curBar = bars[0];
-        contentPanelStartPos = contentPanel.TF.position;
-
         SelectBar(curBar);
 
-        txtCoin.text = UserData.Ins.coin.ToString();
+        UpdateCoin();
         CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
     }
     internal void SelectBar(ShopItemBar selectBar)
@@ -53,8 +50,6 @@ public class UIShop : UICanvas
         {
             curBar.Active(false);
         }
-
-        contentPanel.TF.position = contentPanelStartPos;
 
         curBar = selectBar;
         curBar.Active(true);
@@ -111,7 +106,7 @@ public class UIShop : UICanvas
         {
             buttons[i].SetActive(false);
         }
-        buttons[index].SetActive(true);
+        if(index < buttons.Length) buttons[index].SetActive(true);
     }
 
     public void ButtonClick()
@@ -139,6 +134,7 @@ public class UIShop : UICanvas
         {
             int coin = UserData.Ins.coin - curItem.Cost;
             UserData.Ins.SetIntData(UserData.Key_Coin, ref UserData.Ins.coin, coin);
+            UpdateCoin();
             UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
             SelectItem(curItem);
             SetButton(1);
@@ -186,6 +182,8 @@ public class UIShop : UICanvas
 
     private void InitItemFrames<T>(List<ShopItemData<T>> items) where T : System.Enum
     {
+        // Tat nut buy/equip/equipped
+        SetButton(3);
         for(int i = 0; i < items.Count; i++)
         {
             ShopItem.State state = UserData.Ins.GetEnumData(items[i].type.ToString(), ShopItem.State.Buy);
@@ -197,6 +195,7 @@ public class UIShop : UICanvas
             {
                 itemEquiped = item;
                 item.SetState(ShopItem.State.Equipped);
+                SetButtonState(item);
             }
         }
     }
@@ -210,5 +209,10 @@ public class UIShop : UICanvas
 
         LevelManager.Instance.Player.TakeOffCloth();
         LevelManager.Instance.Player.EquipedCloth();
+    }
+
+    private void UpdateCoin()
+    {
+        txtCoin.text = UserData.Ins.coin.ToString();
     }
 }

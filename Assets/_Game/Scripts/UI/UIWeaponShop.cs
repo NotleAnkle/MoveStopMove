@@ -21,7 +21,7 @@ public class UIWeaponShop : UICanvas
     {
         base.Open();
         SelectWeapon(UserData.Ins.playerWeapon);
-        txtCoin.text = UserData.Ins.coin.ToString();
+        UpdateCoin();
         CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
     }
 
@@ -67,6 +67,7 @@ public class UIWeaponShop : UICanvas
         if (coin > cost)
         {
             UserData.Ins.SetIntData(UserData.Key_Coin, ref UserData.Ins.coin, coin - cost);
+            txtCoin.text = UserData.Ins.coin.ToString();
             UserData.Ins.SetEnumData(weaponType.ToString(), ShopItem.State.Bought);
             SetButton(1);
         }
@@ -101,5 +102,9 @@ public class UIWeaponShop : UICanvas
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         UIManager.Instance.OpenUI<MainMenu>();
+    }
+    private void UpdateCoin()
+    {
+        txtCoin.text = UserData.Ins.coin.ToString();
     }
 }

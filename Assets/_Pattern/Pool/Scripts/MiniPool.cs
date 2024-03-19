@@ -20,8 +20,7 @@ public class MiniPool<T> where T : Component
         {
             T t = GameObject.Instantiate(prefab, parent);
             listActives.Add(t);
-            //cach deu cac doi tuong UI do k tim thay cach a linh dung
-            t.transform.position += new Vector3(311.667f * (i / 2), i % 2 == 1 ? -402.689f / 2 : 0f, 0f);
+
             Despawn(t);
         }
     }
