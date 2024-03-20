@@ -39,11 +39,16 @@ public class TargetIndicator : GameUnit
         direct.gameObject.SetActive(!IsInCamera);
         nameTxt.gameObject.SetActive(IsInCamera);
 
+        if (viewPoint.z < 0)
+        {
+            viewPoint *= -1;
+        }
+
         viewPoint.x = Mathf.Clamp(viewPoint.x, viewPointX.x, viewPointX.y);
         viewPoint.y = Mathf.Clamp(viewPoint.y, viewPointY.x, viewPointY.y);
 
         Vector3 targetSPoint = Camera.ViewportToScreenPoint(viewPoint) - screenHalf;
-        Vector3 playerSPoint = Camera.WorldToScreenPoint(LevelManager.Instance.Player.TF.position) - screenHalf;      
+        Vector3 playerSPoint = Camera.WorldToScreenPoint(LevelManager.Instance.Player.TF.position) - screenHalf;
         rect.anchoredPosition = targetSPoint;
 
         direct.up = (targetSPoint - playerSPoint).normalized;
@@ -56,6 +61,7 @@ public class TargetIndicator : GameUnit
         SetAlpha(GameManager.IsState(GameState.GamePlay) ? 1 : 0);
     }
 
+    #region SetComponent
     public void SetTarget(Transform target)
     {
         this.target = target;
@@ -82,4 +88,5 @@ public class TargetIndicator : GameUnit
     {
         canvasGroup.alpha = alpha;
     }
+    #endregion
 }
