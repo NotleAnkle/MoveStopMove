@@ -107,7 +107,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 29721c95c9068e149b0d86bf6039157c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0d715d9f7d68131478f1d7ffde3f754d, type: 2}
+      objectReference: {fileID: 7171178712456132855, guid: 4a583de8669a1a4488b2564cbb6edbd8, type: 3}
     - target: {fileID: -927199367670048503, guid: 29721c95c9068e149b0d86bf6039157c, type: 3}
       propertyPath: m_Name
       value: Hat_Thor
