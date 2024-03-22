@@ -14,13 +14,14 @@ public class UIWeaponShop : UICanvas
 
     [SerializeField] private Text txtCoin;
 
-    WeaponType weaponType;
+    WeaponType weaponType, eWeaponType;
 
 
     public override void Open()
     {
         base.Open();
-        SelectWeapon(UserData.Ins.playerWeapon);
+        eWeaponType = UserData.Ins.playerWeapon;
+        SelectWeapon(eWeaponType);
         UpdateCoin();
         CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
     }
@@ -32,30 +33,32 @@ public class UIWeaponShop : UICanvas
         WeaponItem item = data.GetWeaponItem(type);
         img.sprite = item.icon;
 
-        ShopItem.State state = UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Buy);
+        ShopItem.State state = UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Lock);
         switch (state)
         {
-            case ShopItem.State.Buy:
-                SetButton(0);
+            case ShopItem.State.Lock:
+                SetButton(ButtonState.Lock);
                 txtCost.text = item.cost.ToString();
                 break;
-            case ShopItem.State.Bought:
-                SetButton(1);
+            case ShopItem.State.Unlock:
+                SetButton(ButtonState.Unlock);
                 break;
-            case ShopItem.State.Equipped:
-                SetButton(2);
-                break;
+        }
+        if(eWeaponType == weaponType)
+        {
+            SetButton(ButtonState.Equipped);
         }
     }
 
-    private void SetButton(int index)
+    enum ButtonState { Lock = 0, Unlock = 1, Equipped = 2, None = 3 }
+    private void SetButton(ButtonState state)
     {
-        // 0: Buy, 1: Bought, 2: Equipped
-        for(int i =  0; i < buttons.Length; i++)
+        int index = (int)state;
+        for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].SetActive(false);
         }
-        buttons[index].SetActive(true);
+        if (index < buttons.Length) buttons[index].SetActive(true);
     }
 
     public void BuyButton()
@@ -68,21 +71,20 @@ public class UIWeaponShop : UICanvas
         {
             UserData.Ins.SetIntData(UserData.Key_Coin, ref UserData.Ins.coin, coin - cost);
             txtCoin.text = UserData.Ins.coin.ToString();
-            UserData.Ins.SetEnumData(weaponType.ToString(), ShopItem.State.Bought);
-            SetButton(1);
+            UserData.Ins.SetEnumData(weaponType.ToString(), ShopItem.State.Unlock);
+            SetButton(ButtonState.Unlock);
         }
     }
     public void EquipButton()
     {
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
-        UserData.Ins.SetEnumData(weaponType.ToString(), ShopItem.State.Equipped);
-        UserData.Ins.SetEnumData(UserData.Ins.playerWeapon.ToString(), ShopItem.State.Bought);
+        eWeaponType = weaponType;
         UserData.Ins.SetEnumData(UserData.Key_Player_Weapon, ref UserData.Ins.playerWeapon, weaponType);
 
         LevelManager.Instance.Player.TryCloth(UIShop.ShopType.weapon, weaponType);
 
-        SetButton(2);
+        SetButton(ButtonState.Equipped);
     }
 
     public void Next()

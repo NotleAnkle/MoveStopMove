@@ -180,9 +180,9 @@ public class UserData : ScriptableObject
         playerAccessory = GetEnumData(Key_Player_Accessory, AccessoryType.None);
         playerSkin = GetEnumData(Key_Player_Skin, SkinType.Normal);
 
-        SetEnumData(WeaponType.Kinfe.ToString(), ShopItem.State.Equipped);
-        SetEnumData(PantType.BatMan.ToString(), ShopItem.State.Equipped);
-        SetEnumData(SkinType.Normal.ToString(), ShopItem.State.Equipped);
+        SetEnumData(WeaponType.Kinfe.ToString(), ShopItem.State.Unlock);
+        SetEnumData(PantType.BatMan.ToString(), ShopItem.State.Unlock);
+        SetEnumData(SkinType.Normal.ToString(), ShopItem.State.Unlock);
     }
 
     public void OnResetData()

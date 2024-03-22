@@ -1,14 +1,13 @@
-using _Framework;
-using _Framework.Pool.Scripts;
 using _UI.Scripts;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class UIShop : UICanvas
 {
-    public enum ShopType { hair, pant, accessory, skin, weapon}
+    public enum ShopType { hair = 0, pant = 1, accessory = 2, skin = 3, weapon = 4}
     [SerializeField] private ShopData data;
     [SerializeField] private Transform contentPanel;
 
@@ -22,6 +21,8 @@ public class UIShop : UICanvas
     private ShopType shopType;
 
     private ShopItem itemEquiped;
+
+    private List<Enum> equippedTypes = new List<Enum>();
 
     [SerializeField] private ShopItem prefab; 
     MiniPool<ShopItem> miniPool = new MiniPool<ShopItem>();
@@ -38,17 +39,32 @@ public class UIShop : UICanvas
     public override void Open()
     {
         base.Open();
+
         curBar = bars[0];
+
+        ReloadData();
+
+        CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
+    }
+
+    private void ReloadData()
+    {
+        GetEquippedData();
+
         SelectBar(curBar);
 
-        UpdateCoin();
-        CameraFollower.Instance.ChangeState(CameraFollower.State.Shop);
+        UpdateCoinText();
     }
     internal void SelectBar(ShopItemBar selectBar)
     {
         if(selectBar != null)
         {
             curBar.Active(false);
+        }
+
+        if (curBar != selectBar)
+        {
+            curItem = null;
         }
 
         curBar = selectBar;
@@ -76,36 +92,32 @@ public class UIShop : UICanvas
     internal void SelectItem(ShopItem item)
     {
         LevelManager.Instance.Player.TryCloth(curBar.Type, item.Type);
-        ShopItem.State state = UserData.Ins.GetEnumData(item.Type.ToString(), ShopItem.State.Buy);
-        item.SetState(state);
         curItem = item;
         SetButtonState(item);
+        if(equippedTypes.Contains(item.Type))
+        {
+            SetButton(ButtonState.Equipped);
+        }
     }
 
     private void SetButtonState(ShopItem item)
     {
         switch (item.state)
         {
-            case ShopItem.State.Buy:
-                SetButton(0);
+            case ShopItem.State.Lock:
+                SetButton(ButtonState.Lock);
                 txtCost.text = item.Cost.ToString();
                 break;
-            case ShopItem.State.Try:
-                SetButton(0);
-                txtCost.text = item.Cost.ToString();
-                break;
-            case ShopItem.State.Bought:
-                SetButton(1);
-                break;
-            case ShopItem.State.Equipped:
-                SetButton(2);
+            case ShopItem.State.Unlock:
+                SetButton(ButtonState.Unlock);
                 break;
         }
     }
 
-    private void SetButton(int index)
+    enum ButtonState {Lock = 0,Unlock = 1, Equipped = 2, None = 3}
+    private void SetButton(ButtonState state)
     {
-        // 0: Buy, 1: Bought, 2: Equipped
+        int index = (int) state;
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].SetActive(false);
@@ -113,53 +125,32 @@ public class UIShop : UICanvas
         if(index < buttons.Length) buttons[index].SetActive(true);
     }
 
-    public void ButtonClick()
-    {
-        SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
-        switch (curItem.state)
-        {
-            case ShopItem.State.Buy:
-                OnBuyButtonClick();
-                break;
-            case ShopItem.State.Bought:
-                OnEquipButtonClick();
-                break;
-            case ShopItem.State.Equipped:
-                //UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
-                //SelectItem(curItem);
-                break;
-        }
-    }
-
-    private void OnBuyButtonClick()
+    public void OnBuyButtonClick()
     {
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
         if (UserData.Ins.coin >= curItem.Cost)
         {
             int coin = UserData.Ins.coin - curItem.Cost;
             UserData.Ins.SetIntData(UserData.Key_Coin, ref UserData.Ins.coin, coin);
-            UpdateCoin();
-            UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Bought);
-            SelectItem(curItem);
-            SetButton(1);
+
+            UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Unlock);
+            curItem.SetState(ShopItem.State.Unlock);
+
+            ReloadData();
         }
 
     }
 
-    private void OnEquipButtonClick()
+    public void OnEquipButtonClick()
     {
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
         if (curItem != null)
         {
-            UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Equipped);
-            if (itemEquiped)
-            {
-                ResetEquippingItem();
-            }
+            ResetEquippingItem();
             SavePlayerSkinData();
-            SelectItem(itemEquiped);
-            SetButton(2);
+            
+            ReloadData();
         }
     }
 
@@ -190,44 +181,43 @@ public class UIShop : UICanvas
     public void OnTryButtonClick()
     {
         ResetEquippingItem();
-        curItem.SetState(ShopItem.State.Try);
-        UserData.Ins.SetEnumData(curItem.Type.ToString(), ShopItem.State.Try);
         SavePlayerSkinData();
+
+        ReloadData();
     }
 
     private void ResetEquippingItem()
     {
         if (itemEquiped)
         {
-            if (itemEquiped.state == ShopItem.State.Equipped)
-            {
-                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Bought);
-                itemEquiped.SetState(ShopItem.State.Bought);
-            }
-            else
-            {
-                //itemEquiped.state == ShopItem.State.Try
-                UserData.Ins.SetEnumData(itemEquiped.Type.ToString(), ShopItem.State.Buy);
-                itemEquiped.SetState(ShopItem.State.Buy);
-            }
+            itemEquiped.SetEquipped(false);
         }
         itemEquiped = curItem;
+        itemEquiped.SetEquipped(true);
+        equippedTypes[(int)shopType] = itemEquiped.Type;
     }
     private void InitItemFrames<T>(List<ShopItemData<T>> items) where T : System.Enum
     {
         // Tat nut buy/equip/equipped
-        SetButton(3);
+        SetButton(ButtonState.None);
+      
+
         for(int i = 0; i < items.Count; i++)
         {
-            ShopItem.State state = UserData.Ins.GetEnumData(items[i].type.ToString(), ShopItem.State.Buy);
+            ShopItem.State state = UserData.Ins.GetEnumData(items[i].type.ToString(), ShopItem.State.Lock);
             ShopItem item = miniPool.Spawn();
             item.SetState(state);
             item.SetData<T>(items[i], this);
-
-            if(item.state == ShopItem.State.Equipped || item.state == ShopItem.State.Try)
+            if (equippedTypes.Contains(item.Type))
             {
                 itemEquiped = item;
-                SetButtonState(item);
+                if (!curItem)
+                {
+                    curItem = itemEquiped;
+                }
+                SelectItem(curItem);
+                itemEquiped.SetEquipped(true);
+                curItem.SetSelect();
             }
         }
     }
@@ -243,8 +233,21 @@ public class UIShop : UICanvas
         LevelManager.Instance.Player.EquipedCloth();
     }
 
-    private void UpdateCoin()
+    private void UpdateCoinText()
     {
         txtCoin.text = UserData.Ins.coin.ToString();
+    }
+
+    private void GetEquippedData()
+    {
+        equippedTypes.Clear();
+        //ShopType.hair = 0
+        equippedTypes.Add(UserData.Ins.playerHair);
+        //ShopType.pant = 1
+        equippedTypes.Add(UserData.Ins.playerPant);
+        //ShopType.pant = 2
+        equippedTypes.Add(UserData.Ins.playerAccessory);
+        //ShopType.pant = 3
+        equippedTypes.Add(UserData.Ins.playerSkin);
     }
 }
