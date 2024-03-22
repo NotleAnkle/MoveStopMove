@@ -181,24 +181,30 @@ public class Player : Character
     private SkinType skinType;
 
     //Mac trang bi duoc luu
-    public void WearEquipedCloth()
+    private void GetEquippedData()
     {
         hairType = UserData.Ins.playerHair;
+        pantType = UserData.Ins.playerPant;
+        accessoryType = UserData.Ins.playerAccessory;
+        skinType = UserData.Ins.playerSkin;
+    }
+    public void WearEquipedCloth()
+    {
+        GetEquippedData();
+        
         ChangeHair(hairType);
 
-        pantType = UserData.Ins.playerPant;
         ChangePant(pantType);
 
-        accessoryType = UserData.Ins.playerAccessory;
         ChangeAccessory(accessoryType);
 
-        ChangeWeapon(UserData.Ins.playerWeapon);
-
-        skinType = UserData.Ins.playerSkin;
+        ChangeWeapon(UserData.Ins.playerWeapon); 
     }
     //Thao cac trang bi thu(try)
     private void TakeOffTryClothes()
     {
+        GetEquippedData();
+
         if (isTry(hairType))
         {
             currentSkin.DespawnHair();
@@ -224,7 +230,8 @@ public class Player : Character
     }
     private bool isTry(Enum type)
     {
-        return (UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Lock) == ShopItem.State.Lock);
+        ShopItem.State state = UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Lock);
+        return (state == ShopItem.State.Lock);
     }
     #endregion
 
