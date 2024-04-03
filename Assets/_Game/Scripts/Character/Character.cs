@@ -5,30 +5,32 @@ using UnityEngine;
 
 public class Character : GameUnit
 {
-    [SerializeField] protected float speed = 5f;
-    [SerializeField]protected Skin currentSkin;
-    [SerializeField] protected Transform indicatorPoint;
-
     #region components
-    private float range;
-    protected int score = 0;
-    public Vector3 throwPoint => currentSkin.RightHand.position;
-
-    public float Range => range;
-
+    //Target 
     private List<Character> targetList = new List<Character>();
 
-    private string currentAnimName;
-    protected Weapon curWeapon => currentSkin.CurWeapon;
-    public int Score => score;
+    // Skin & weapon
+    [SerializeField] protected Skin currentSkin;
     public bool IsHasTarget => targetList.Count > 0;
     public bool IsAttackable => curWeapon.IsActive;
+    public Vector3 throwPoint => currentSkin.RightHand.position;
+    protected Weapon curWeapon => currentSkin.CurWeapon;
+    private string currentAnimName;
+
+    //Character stats
+    [SerializeField] protected float speed = 5f;
+    public float Range => range;
+    public int Score => score;
     public bool IsDying { get; protected set; }
-
-    protected TargetIndicator indicator;
-
-    public string ownerName => indicator.Name;
     public string killerName { get; protected set; }
+    private float range;
+    protected int score = 0;
+
+    //Indicator
+    [SerializeField] protected Transform indicatorPoint;
+    protected TargetIndicator indicator;
+    public string ownerName => indicator.Name;
+
     #endregion
 
     private void Awake()
