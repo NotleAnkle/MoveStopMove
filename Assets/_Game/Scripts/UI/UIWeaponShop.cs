@@ -103,7 +103,7 @@ public class UIWeaponShop : UICanvas
     {
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
-        UIManager.Instance.OpenUI<MainMenu>();
+        UIManager.Instance.OpenUI<UIMainMenu>();
     }
     private void UpdateCoin()
     {

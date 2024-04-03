@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8984776491062201969}
   - component: {fileID: 8984776491062201982}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Coin BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8984776491114868284}
   - component: {fileID: 8984776491114868285}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7854375083660014458}
   m_Layer: 0
-  m_Name: Vib
+  m_Name: Button - Vib
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 8984776491332884427}
   - component: {fileID: 8984776491332884429}
   m_Layer: 5
-  m_Name: Skin
+  m_Name: Button - Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 8984776491366866083}
   - component: {fileID: 8984776491366866080}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 8984776491433113340}
   - component: {fileID: 8984776491433113341}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - Ads Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 8984776491480261406}
   - component: {fileID: 8984776491480261407}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 8984776491591923775}
   - component: {fileID: 8984776491591923772}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 8984776491653840973}
   - component: {fileID: 8499125742484552754}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: 'Button - Weapon '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956200694082408719}
   m_Layer: 0
-  m_Name: Ads
+  m_Name: Button - Ads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 8984776491815323571}
   - component: {fileID: 8984776491815323568}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1133432203784586628}
   m_Layer: 0
-  m_Name: Sound
+  m_Name: Button - Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 8984776491965717369}
   - component: {fileID: 8984776491965717350}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 8984776492005106372}
   - component: {fileID: 3682493329429163445}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: UIMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8984776492005106370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c973f39cd8970e45b8d549142984295, type: 3}
+  m_Script: {fileID: 11500000, guid: 88cfd460325df8d448b2bba9d1d5f835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 8984776492010828294}
   - component: {fileID: 8984776492010828295}
   m_Layer: 5
-  m_Name: txtCoin
+  m_Name: Text - Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,7 +1189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8984776492030297930}
   m_Layer: 5
-  m_Name: Money
+  m_Name: Text - Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 8984776492341964610}
   - component: {fileID: 8984776492341964611}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 8984776492402346390}
   - component: {fileID: 8984776492402346391}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 8984776492415426269}
   - component: {fileID: 8984776492415426266}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Coin Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 8984776492630739881}
   - component: {fileID: 8984776492630739926}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1534,7 +1534,7 @@ GameObject:
   - component: {fileID: 8984776492697067479}
   - component: {fileID: 8984776492697067476}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 8984776492716443783}
   - component: {fileID: 8984776492716443780}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Star BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 8984776492759731194}
   - component: {fileID: 8984776492759731195}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Image - Star Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8984776492958402065}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Image - Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1801,7 +1801,7 @@ GameObject:
   - component: {fileID: 8984776492978090322}
   - component: {fileID: 8984776492978090323}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image - Ads BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1877,7 +1877,7 @@ GameObject:
   - component: {fileID: 8984776493129303671}
   - component: {fileID: 8984776493129303668}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1958,7 +1958,7 @@ GameObject:
   - component: {fileID: 8984776493199545206}
   - component: {fileID: 6870354090153281477}
   m_Layer: 5
-  m_Name: Play
+  m_Name: 'Button - Play '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

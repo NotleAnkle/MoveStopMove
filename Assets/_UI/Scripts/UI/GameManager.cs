@@ -50,7 +50,7 @@ namespace _UI.Scripts.UI
 
         private void Start()
         {
-            UIManager.Instance.OpenUI<MainMenu>();
+            UIManager.Instance.OpenUI<UIMainMenu>();
 
             if(PlayerPrefs.GetInt("firstTime", 1) == 1)
             {
@@ -62,7 +62,7 @@ namespace _UI.Scripts.UI
         public void OnRestart()
         {
             LevelManager.Instance.OnInit();
-            UIManager.Instance.OpenUI<PlayUI>();
+            UIManager.Instance.OpenUI<UIPlay>();
             CameraFollower.Instance.ChangeState(CameraFollower.State.Gameplay);
         }
     }

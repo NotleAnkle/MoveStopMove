@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _UI.Scripts
 {
-    public class MainMenu : UICanvas
+    public class UIMainMenu : UICanvas
     {
         [SerializeField] private Text txtCoin;
         public override void Open()
@@ -20,7 +20,7 @@ namespace _UI.Scripts
         {
             SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
-            UIManager.Instance.CloseUI<MainMenu>();
+            UIManager.Instance.CloseUI<UIMainMenu>();
             GameManager.Instance.OnRestart();
         }
 
@@ -28,7 +28,7 @@ namespace _UI.Scripts
         {
             SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
-            UIManager.Instance.CloseUI<MainMenu>();
+            UIManager.Instance.CloseUI<UIMainMenu>();
             UIManager.Instance.OpenUI<UIShop>();
         }
 
@@ -36,7 +36,7 @@ namespace _UI.Scripts
         {
             SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
-            UIManager.Instance.CloseUI<MainMenu>();
+            UIManager.Instance.CloseUI<UIMainMenu>();
             UIManager.Instance.OpenUI<UIWeaponShop>();
         }
     }

@@ -228,7 +228,7 @@ public class UIShop : UICanvas
         curBar.Active(false);
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
-        UIManager.Instance.OpenUI<MainMenu>();
+        UIManager.Instance.OpenUI<UIMainMenu>();
 
         LevelManager.Instance.Player.TakeOffCloth();
         LevelManager.Instance.Player.EquipedCloth();

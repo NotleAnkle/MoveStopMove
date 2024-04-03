@@ -191,10 +191,10 @@ RectTransform:
   m_Father: {fileID: 1235891464175284989}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 319}
-  m_SizeDelta: {x: 0, y: 830.553}
+  m_SizeDelta: {x: 0, y: -1089.447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1235891463981993700
 CanvasRenderer:
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 1235891464029424796}
   - component: {fileID: 1235891464029424795}
   m_Layer: 5
-  m_Name: Hair
+  m_Name: Button - Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -404.9831, y: 12.000084}
+  m_AnchoredPosition: {x: -404.9831, y: 12.000061}
   m_SizeDelta: {x: 263.9077, y: 215.741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1235891464029424794
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 1235891464175284987}
   - component: {fileID: 1235891464175284986}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel - Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,10 +450,10 @@ RectTransform:
   m_Father: {fileID: 1235891465265921103}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -486}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1235891464175284987
 CanvasRenderer:
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 1235891464528933099}
   - component: {fileID: 1235891464528933098}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 1235891464629698289}
   - component: {fileID: 1235891464629698288}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00024683547, y: 0}
   m_SizeDelta: {x: 0, y: 993.99}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4665770752013291028
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 1235891465064406719}
   - component: {fileID: 1235891465064406718}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 1235891465117294758}
   - component: {fileID: 1235891465117294778}
   m_Layer: 5
-  m_Name: Pant
+  m_Name: Button - Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134.79486, y: 12.000084}
+  m_AnchoredPosition: {x: -134.79486, y: 12.000061}
   m_SizeDelta: {x: 263.0983, y: 215.741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1235891465117294756
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 1235891465135928875}
   - component: {fileID: 1235891465135928884}
   m_Layer: 5
-  m_Name: Shield
+  m_Name: Button - Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,7 +1075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 139.95708, y: 12.000084}
+  m_AnchoredPosition: {x: 139.95708, y: 12.000061}
   m_SizeDelta: {x: 273.7781, y: 215.741}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!222 &1235891465135928873
@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 1235891465159074211}
   - component: {fileID: 1235891465159074210}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 'Image - Shield '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 1235891465555565466}
   - component: {fileID: 1235891465555565469}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Panel - Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1405,10 +1405,10 @@ RectTransform:
   m_Father: {fileID: 1235891464175284989}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -121}
-  m_SizeDelta: {x: -360, y: -74.329956}
+  m_AnchoredPosition: {x: 0, y: 839}
+  m_SizeDelta: {x: -360, y: -1994.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1235891465555565466
 CanvasRenderer:
@@ -1462,7 +1462,7 @@ GameObject:
   - component: {fileID: 1235891465613460131}
   - component: {fileID: 1235891465613460140}
   m_Layer: 5
-  m_Name: Set
+  m_Name: Button - Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 3131588091602216909}
   - component: {fileID: 3131588091602216908}
   m_Layer: 5
-  m_Name: Equiped
+  m_Name: Button - Equiped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 3131588091873182570}
   - component: {fileID: 3131588091873182549}
   m_Layer: 5
-  m_Name: Buy
+  m_Name: Button - Buy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2103,7 +2103,7 @@ GameObject:
   - component: {fileID: 3131588092300119678}
   - component: {fileID: 3131588092300119673}
   m_Layer: 5
-  m_Name: Equip
+  m_Name: Button - Equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2234,7 +2234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3131588092525528033}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Panel - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2570,7 +2570,7 @@ GameObject:
   - component: {fileID: 4052634397294963515}
   - component: {fileID: 4778014063479704494}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,7 +2646,7 @@ GameObject:
   - component: {fileID: 2138810830053335904}
   - component: {fileID: 3550162616821271165}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2726,7 +2726,7 @@ GameObject:
   - component: {fileID: 3827832266380396174}
   - component: {fileID: 688647279385484807}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2801,7 +2801,7 @@ GameObject:
   - component: {fileID: 5634882939375538194}
   - component: {fileID: 3192565915788227405}
   m_Layer: 0
-  m_Name: Back
+  m_Name: Button - Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2895,7 +2895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5228328835560749365}
   m_Layer: 5
-  m_Name: Money
+  m_Name: Panel - Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

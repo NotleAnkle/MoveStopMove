@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601072759106870703}
   m_Layer: 5
-  m_Name: OFF
+  m_Name: State - OFF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 1601072759160815319}
   - component: {fileID: 1601072759160815312}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Button On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1601072759170653559}
   - component: {fileID: 1601072759170653552}
   m_Layer: 5
-  m_Name: Sound
+  m_Name: Panel - Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 1601072759201780395}
   - component: {fileID: 1601072759201780388}
   m_Layer: 5
-  m_Name: Continue
+  m_Name: Button - Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601072759305140349}
   m_Layer: 5
-  m_Name: OFF
+  m_Name: Button - OFF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 1601072759525986529}
   - component: {fileID: 1601072759525986530}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 1601072759631617022}
   - component: {fileID: 1601072759631617023}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Button Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1601072759655191910}
   - component: {fileID: 1601072759655191911}
   m_Layer: 5
-  m_Name: Vibration
+  m_Name: Panel - Vibration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 1601072759817360515}
   - component: {fileID: 1601072759817360540}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 1601072759908817988}
   - component: {fileID: 1601072759908817989}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Button On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 1601072759942842665}
   - component: {fileID: 1601072759942842666}
   m_Layer: 5
-  m_Name: Home
+  m_Name: Button - Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 1601072760019230119}
   - component: {fileID: 1601072760019230112}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 1601072760058646624}
   - component: {fileID: 3621585780789352872}
   m_Layer: 5
-  m_Name: Switch
+  m_Name: Button - Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 1601072760157729395}
   - component: {fileID: 1601072760157729356}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 1601072760224760979}
   - component: {fileID: 1601072760224761196}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 1601072760247766545}
   - component: {fileID: 1601072760247766546}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Vibraration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 1601072760360610459}
   - component: {fileID: 5997880523493308144}
   m_Layer: 5
-  m_Name: Switch
+  m_Name: Button - Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 1601072760435771493}
   - component: {fileID: 1601072760435771494}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1558,7 +1558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601072760622423079}
   m_Layer: 5
-  m_Name: ON
+  m_Name: State - ON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1596,7 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601072760652545180}
   m_Layer: 5
-  m_Name: ON
+  m_Name: State - ON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 1601072760700492870}
   - component: {fileID: 1601072760700492871}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Button Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 1601072760912689341}
   - component: {fileID: 1601072760912689342}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,7 +1889,7 @@ GameObject:
   - component: {fileID: 1601072760913404345}
   - component: {fileID: 1601072760913404346}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,7 +1969,7 @@ GameObject:
   - component: {fileID: 1601072760942761142}
   - component: {fileID: 1601072760942761143}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text  - Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2049,7 +2049,7 @@ GameObject:
   - component: {fileID: 1601072760961306575}
   - component: {fileID: 1601072760961306568}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2129,7 @@ GameObject:
   - component: {fileID: 1601072761080897860}
   - component: {fileID: 1601072761080897861}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel - Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

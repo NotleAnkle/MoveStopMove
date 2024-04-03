@@ -49,7 +49,12 @@ public class TargetIndicator : GameUnit
 
         Vector3 targetSPoint = Camera.ViewportToScreenPoint(viewPoint) - screenHalf;
         Vector3 playerSPoint = Camera.WorldToScreenPoint(LevelManager.Instance.Player.TF.position) - screenHalf;
-        rect.anchoredPosition = targetSPoint;
+
+        Vector3 correctSPoint = new Vector3(0, 0, 0);
+        correctSPoint.x = (viewPoint.x * Screen.width - screenHalf.x);
+        correctSPoint.y = viewPoint.y * Screen.height - screenHalf.y;
+
+        rect.anchoredPosition = correctSPoint;
 
         direct.up = (targetSPoint - playerSPoint).normalized;
     }

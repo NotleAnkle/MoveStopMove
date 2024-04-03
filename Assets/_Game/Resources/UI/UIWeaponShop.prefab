@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7634551058343063030}
   - component: {fileID: 7807047539765277941}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5031950000892260973}
   - component: {fileID: 9061757073830513494}
   m_Layer: 5
-  m_Name: Next
+  m_Name: Button - Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5031950001534873499}
   - component: {fileID: 2420877798686457092}
   m_Layer: 5
-  m_Name: Prev
+  m_Name: Button - Prev
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 5031950001646513183}
   - component: {fileID: 5031950001646513180}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 5031950002126735109}
   - component: {fileID: 5031950002126735114}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 5031950002697147283}
   - component: {fileID: 4435098460160175052}
   m_Layer: 5
-  m_Name: Equip
+  m_Name: Button - Equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 5031950002785457766}
   - component: {fileID: 5031950002785457767}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Button - Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 3757434042603847361}
   - component: {fileID: 7557138807273434085}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Image - Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 5588331648050572050}
   - component: {fileID: 5588331648050572049}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Buy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 5588331648457139810}
   - component: {fileID: 5588331648457139809}
   m_Layer: 5
-  m_Name: Buy
+  m_Name: Button - Buy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,7 +1175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5588331649261959719}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Panel - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 5588331649387195228}
   - component: {fileID: 5588331649387195219}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Equipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,7 +1297,7 @@ GameObject:
   - component: {fileID: 5588331649829524373}
   - component: {fileID: 5588331649829524372}
   m_Layer: 5
-  m_Name: Equiped
+  m_Name: Button - Equiped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,7 +1430,7 @@ GameObject:
   - component: {fileID: 6582347324645518155}
   - component: {fileID: 2617913391451827460}
   m_Layer: 5
-  m_Name: Image - Coin
+  m_Name: Image - Coin BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 1858642939354293255}
   - component: {fileID: 2667760969849424254}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 8640224616675820500}
   - component: {fileID: 1543420155711961666}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

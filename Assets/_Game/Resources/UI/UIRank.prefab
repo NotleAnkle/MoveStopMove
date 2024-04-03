@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1557296770473995321}
   - component: {fileID: 6037059351792069214}
   m_Layer: 5
-  m_Name: txtTouch
+  m_Name: Text - Touch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3696049021212825183}
   - component: {fileID: 8476602834571784061}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Button - Triple reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 3414738174970343069}
   - component: {fileID: 5520429211776296998}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 5444981701581167807}
   - component: {fileID: 4534568550996936841}
   m_Layer: 5
-  m_Name: txtRank
+  m_Name: Text - Rank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 1213154290548281032}
   - component: {fileID: 1933973722584666681}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Kill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 7940961014907973091}
   - component: {fileID: 6670648855688408604}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Button - Screenshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 6566184892293005309}
   - component: {fileID: 9119948174178419905}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Ads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 3485601791970367782}
   - component: {fileID: 1584533925037958457}
   m_Layer: 5
-  m_Name: imgScreenshot
+  m_Name: Image - ScreenshotBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 7334900179063077576}
   - component: {fileID: 5573324989483045876}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Button - Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 51742471836567657}
   - component: {fileID: 2520703013351939226}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Commnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 6784020384377433992}
   - component: {fileID: 1865868526552978089}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 6545581149657128412}
   - component: {fileID: 6723893794556986363}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 8868619460475810334}
   - component: {fileID: 4500318360853840406}
   m_Layer: 5
-  m_Name: imgCoin
+  m_Name: Image - Coin Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 1315725970823466819}
   - component: {fileID: 2785147216904920930}
   m_Layer: 5
-  m_Name: txtCoin
+  m_Name: Text - Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,7 +1451,7 @@ GameObject:
   - component: {fileID: 6446274757513020712}
   - component: {fileID: 2419564432251442495}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text - Triple reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 3249412338659847172}
   - component: {fileID: 3071346640681461527}
   m_Layer: 5
-  m_Name: txtPer
+  m_Name: Text - Killer Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 7644569239434485908}
   - component: {fileID: 7644569239434485907}
   m_Layer: 5
-  m_Name: txtPer
+  m_Name: Text - Victory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1771,7 +1771,7 @@ GameObject:
   - component: {fileID: 7644569239434630171}
   - component: {fileID: 7644569239434630170}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,7 +1847,7 @@ GameObject:
   - component: {fileID: 8017710459289600181}
   - component: {fileID: 4503896333942575926}
   m_Layer: 5
-  m_Name: Triple
+  m_Name: Panel - Triple reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,7 +1926,7 @@ GameObject:
   - component: {fileID: 3587194719727100294}
   - component: {fileID: 7858120890955880069}
   m_Layer: 5
-  m_Name: TextBackground
+  m_Name: Image - Comment BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2002,7 +2002,7 @@ GameObject:
   - component: {fileID: 4033446074478058467}
   - component: {fileID: 4135329963280708157}
   m_Layer: 5
-  m_Name: TextBackground
+  m_Name: Image - Comment BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

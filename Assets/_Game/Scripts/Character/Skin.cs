@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using static UnityEditor.LightingExplorerTableColumn;
-using UnityEngine.UI;
 using _Framework.Pool.Scripts;
-using _Game.Utils;
 
 public class Skin : GameUnit
 {

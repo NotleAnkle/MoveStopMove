@@ -111,7 +111,7 @@ public class LevelManager : Singleton<LevelManager>
         GameManager.ChangeState(GameState.GamePlay);
         SetTargetIndicatorAlpha(1);
         Player.OnRevive();
-        UIManager.Instance.OpenUI<PlayUI>();
+        UIManager.Instance.OpenUI<UIPlay>();
     }
 
     private void DespawnBot()

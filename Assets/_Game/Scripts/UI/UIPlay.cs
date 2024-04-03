@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayUI : UICanvas
+public class UIPlay : UICanvas
 {
     [SerializeField] private GameObject tutorial;
     [SerializeField] private Text botNumberText;

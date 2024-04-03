@@ -40,12 +40,12 @@ public class UISetting : UICanvas
     public void OnHomeButtonClick()
     {
         CloseDirectly();
-        UIManager.Instance.OpenUI<MainMenu>();
+        UIManager.Instance.OpenUI<UIMainMenu>();
     }
 
     public void OnContinueButtonClick()
     {
         CloseDirectly();
-        UIManager.Instance.OpenUI<PlayUI>();
+        UIManager.Instance.OpenUI<UIPlay>();
     }
 }

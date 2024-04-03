@@ -19,7 +19,7 @@ public class UIRank : UICanvas
     private void OnEnable()
     {
         txtCoin.text = LevelManager.Instance.Player.Score.ToString();
-        UIManager.Instance.CloseUI<PlayUI>();
+        UIManager.Instance.CloseUI<UIPlay>();
         btnTriple.interactable = true;
     }
 
@@ -41,7 +41,7 @@ public class UIRank : UICanvas
     public void OnTouch()
     {
         UIManager.Instance.CloseUI<UIRank>();
-        UIManager.Instance.OpenUI<MainMenu>();
+        UIManager.Instance.OpenUI<UIMainMenu>();
     }
 
     public void OnTripleButtonClick()
