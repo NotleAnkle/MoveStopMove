@@ -86,7 +86,7 @@ public class Player : Character
     private void Run()
     {
         CancelAttack();
-        Vector2 deltaPos = joystick.Direction * speed * Time.deltaTime;
+        Vector2 deltaPos = joystick.Direction.normalized * speed * Time.deltaTime;
         Vector3 nextPos = new Vector3(deltaPos.x, 0f, deltaPos.y) + transform.position;
 
         transform.position = CheckGround(nextPos);
