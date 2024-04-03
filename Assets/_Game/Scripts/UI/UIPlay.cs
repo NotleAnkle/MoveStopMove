@@ -1,7 +1,5 @@
 using _Framework.Event.Scripts;
 using _UI.Scripts.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

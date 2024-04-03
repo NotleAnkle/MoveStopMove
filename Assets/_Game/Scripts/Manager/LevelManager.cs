@@ -6,9 +6,6 @@ using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Diagnostics;
-using UnityEngine.UIElements;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -21,8 +18,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public int BotNumberLeft => botNumber + bots.Count;
 
-    public int PlayerRank;
-    public string PlayerKiller;
+    public int playerRank { get; private set;}
 
     //dang ky event
     private void Awake()
@@ -66,7 +62,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            PlayerRank = bots.Count + botNumber;
+            playerRank = bots.Count + botNumber;
         }        
     }
     private void SpawnBot()

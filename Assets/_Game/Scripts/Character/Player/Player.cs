@@ -205,22 +205,22 @@ public class Player : Character
     {
         GetEquippedData();
 
-        if (isTry(hairType))
+        if (IsTry(hairType))
         {
             currentSkin.DespawnHair();
             UserData.Ins.SetEnumData(UserData.Key_Player_Hair, ref UserData.Ins.playerHair, HairType.None);
         }
-        if (isTry(pantType))
+        if (IsTry(pantType))
         {
             ChangePant(PantType.BatMan);
             UserData.Ins.SetEnumData(UserData.Key_Player_Pant, ref UserData.Ins.playerPant, PantType.BatMan);
         }
-        if (isTry(accessoryType))
+        if (IsTry(accessoryType))
         {
             currentSkin.DespawnAccessory();
             UserData.Ins.SetEnumData(UserData.Key_Player_Accessory, ref UserData.Ins.playerAccessory, AccessoryType.None);
         }
-        if (isTry(skinType))
+        if (IsTry(skinType))
         {
             TakeOffCloth();
             UserData.Ins.SetEnumData(UserData.Key_Player_Skin, ref UserData.Ins.playerSkin, SkinType.Normal);
@@ -228,7 +228,7 @@ public class Player : Character
             WearEquipedCloth();
         }
     }
-    private bool isTry(Enum type)
+    private bool IsTry(Enum type)
     {
         ShopItem.State state = UserData.Ins.GetEnumData(type.ToString(), ShopItem.State.Lock);
         return (state == ShopItem.State.Lock);

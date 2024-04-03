@@ -240,10 +240,11 @@ Transform:
   m_GameObject: {fileID: 80964440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1521089544}
+  - {fileID: 1192800552}
   m_Father: {fileID: 1149382206}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -319,8 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1149382207}
   bots: []
-  PlayerRank: 0
-  PlayerKiller: 
 --- !u!1 &345893112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1060,6 @@ Transform:
   m_Children:
   - {fileID: 5006512735673245318}
   - {fileID: 80964441}
-  - {fileID: 1192800552}
   - {fileID: 2015734921}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1141,13 +1139,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192800551}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1149382206}
-  m_RootOrder: 2
+  m_Father: {fileID: 80964441}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521089543
 GameObject:
@@ -3764,9 +3762,6 @@ MonoBehaviour:
   pant: {fileID: 8694194341496546837}
   pantData: {fileID: 11400000, guid: 842396b2851fec54ea14766c786d7e55, type: 2}
   anim: {fileID: 3166231813552174076}
-  currentWeapon: {fileID: 0}
-  currentHair: {fileID: 0}
-  currentAccessory: {fileID: 0}
   isCanChange: 1
 --- !u!1 &8404232990820264445
 GameObject:

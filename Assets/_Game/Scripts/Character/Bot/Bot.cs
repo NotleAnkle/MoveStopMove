@@ -1,9 +1,6 @@
-using _Framework;
-using _Framework.Event.Scripts;
 using _Framework.StateMachine;
 using _Game.Utils;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,12 +21,12 @@ public class Bot : Character
     {
         EquipedCloth();
         base.OnInit();
+        GetRandomScore();
         attackRange.OnInit(this);
         agent.speed = speed;
         curState = new IdleState();
         TurnOffTargetCircle();
         indicator.SetName(nameData.getRandomName());
-        GetRandomScore();
     }
     public override void OnDeath()
     {
