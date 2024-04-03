@@ -18,7 +18,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public int BotNumberLeft => botNumber + bots.Count;
 
-    public int playerRank { get; private set;}
+    public int PlayerRank { get; private set;}
 
     //dang ky event
     private void Awake()
@@ -62,7 +62,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            playerRank = bots.Count + botNumber;
+            PlayerRank = bots.Count + botNumber;
         }        
     }
     private void SpawnBot()

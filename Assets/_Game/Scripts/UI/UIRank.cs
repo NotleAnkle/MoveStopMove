@@ -34,8 +34,8 @@ public class UIRank : UICanvas
         SoundManager.Instance.Play(AudioType.SFX_EndLose);
         panelRank.SetActive(true);
         panelVictory.SetActive(false);
-        txtRank.text = "#" + LevelManager.Instance.playerRank.ToString();
-        txtName.text = LevelManager.Instance.Player.killerName.ToString();
+        txtRank.text = "#" + LevelManager.Instance.PlayerRank.ToString();
+        txtName.text = LevelManager.Instance.Player.KillerName.ToString();
     }
 
     public void OnTouch()

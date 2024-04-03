@@ -22,7 +22,7 @@ public class Character : GameUnit
     public float Range => range;
     public int Score => score;
     public bool IsDying { get; protected set; }
-    public string killerName { get; protected set; }
+    public string KillerName { get; protected set; }
     private float range;
     protected int score = 0;
 
@@ -176,7 +176,7 @@ public class Character : GameUnit
     #region other
     public void SetKillerName(string name)
     {
-        killerName = name;
+        KillerName = name;
     }
     protected void GetRandomScore()
     {
