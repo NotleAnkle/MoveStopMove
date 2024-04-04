@@ -49,7 +49,6 @@ public class UIPlay : UICanvas
 
     public void OnSettingButtonClick()
     {
-        CloseDirectly();
         UIManager.Instance.OpenUI<UISetting>();
     }
 }
