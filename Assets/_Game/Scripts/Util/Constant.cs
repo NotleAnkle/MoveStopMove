@@ -14,8 +14,8 @@ public class Constant
     public const string ANIM_DEAD = "dead";
     public const string ANIM_DANCE = "run";
 
-    public const float RANGE_DEFAULT = 6f;
-    public const float RANGE_MAX = 18f;
+    public const float RANGE_DEFAULT = 5f;
+    public const float RANGE_MAX = 15f;
 
     public const float TIME_ATTACK_DELAY = 0.3f;
 

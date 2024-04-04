@@ -48,6 +48,5 @@ public class CameraFollower : Singleton<CameraFollower>
     {
         targetOffset = offsets[(int)state].localPosition;
         targetRotate = offsets[(int)state].localRotation;
-        return;
     }
 }
