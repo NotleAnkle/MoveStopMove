@@ -1,5 +1,6 @@
 ﻿using _Framework;
 using _Framework.Pool.Scripts;
+using _UI.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,7 @@ public abstract class Bullet : GameUnit
     protected void OnTriggerEnter(Collider other)
     {
         Character character = Cache<Character>.GetComponent(other); 
-        if (character != owner && !character.IsDying)
+        if (character != owner && !character.IsDying && GameManager.IsState(GameState.GamePlay))
         {
             OnDespawn();
             character.OnDeath();
