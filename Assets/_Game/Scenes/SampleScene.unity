@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666705637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcba0ab4d3158eb4084119c444681521, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ccb0530c601aa34ba7667cb80ba8012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasParentTF: {fileID: 1566259567}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768269837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be44fb8ce9c84adfa0c5c60635425158, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eaf69a0a31dc5741ad97fdc4b9d3391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1770544237 stripped

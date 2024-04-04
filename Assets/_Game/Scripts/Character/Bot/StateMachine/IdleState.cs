@@ -9,6 +9,7 @@ public class IdleState : IState<Bot>
     public void OnEnter(Bot t)
     {
         t.ChangeAnim(Constant.ANIM_IDLE);
+        t.StopMove();
     }
 
     public void OnExecute(Bot t)

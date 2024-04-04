@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoomerangBullet : Bullet
 {
     [SerializeField] AnimationCurve curve;
-    private float rotationSpeed = 1000f;
+    private float rotationSpeed = 800f;
     private bool IsBack = false;
 
     public override void Move()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HammerBullet : Bullet
 {
-    private float rotationSpeed = 1000f;
+    private float rotationSpeed = 800f;
 
     public override void Move()
     {
