@@ -52,6 +52,7 @@ public class Player : Character
     {
         reviveVFX.Play();
         IsDying = false;
+        indicator.SetAlpha(1);
         ChangeAnim(Constant.ANIM_IDLE);
     }
     #endregion

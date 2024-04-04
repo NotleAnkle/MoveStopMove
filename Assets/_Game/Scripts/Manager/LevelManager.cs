@@ -105,7 +105,6 @@ public class LevelManager : Singleton<LevelManager>
     public void OnRevive()
     {
         GameManager.ChangeState(GameState.GamePlay);
-        SetTargetIndicatorAlpha(1);
         Player.OnRevive();
         UIManager.Instance.OpenUI<UIPlay>();
     }
