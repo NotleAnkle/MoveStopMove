@@ -1,3 +1,4 @@
+using _Framework;
 using _Framework.Event.Scripts;
 using _Framework.Pool.Scripts;
 using _Framework.Singleton;
@@ -115,5 +116,17 @@ public class LevelManager : Singleton<LevelManager>
         {
             bots[i].OnDespawn();
         }
+    }
+
+    private void ClearCache()
+    {
+        Cache<Bullet>.Clear();
+        Cache<Bot>.Clear();
+        Cache<Character>.Clear();
+    }
+
+    private void NextLevel()
+    {
+        ClearCache(); 
     }
 }

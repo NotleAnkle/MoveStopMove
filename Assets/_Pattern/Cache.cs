@@ -19,6 +19,11 @@ namespace _Framework
                 return collectItems;
             }
         }
+
+        public static void Clear()
+        {
+            _dict.Clear();
+        }
             
     }
 }
