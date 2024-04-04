@@ -137,6 +137,7 @@ public class UIShop : UICanvas
             curItem.SetState(ShopItem.State.Unlock);
 
             ReloadData();
+            SelectItem(curItem);
             curItem.SetSelect();
         }
 
