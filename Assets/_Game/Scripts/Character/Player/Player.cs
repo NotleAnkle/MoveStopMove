@@ -13,7 +13,7 @@ public class Player : Character
     [SerializeField] private AttackRange attackRange;
     [SerializeField] private ParticleSystem reviveVFX;
 
-    private bool IsAttacking = false;
+    private bool isAttacking = false, isAttackReadyAfterMove = true;
 
     #region override
     private void Start()
@@ -69,7 +69,7 @@ public class Player : Character
             {
                 if (IsHasTarget)
                 {
-                    if (IsAttackable)
+                    if (IsAttackable && isAttackReadyAfterMove)
                     {
                         Attack();
                     }
@@ -87,6 +87,8 @@ public class Player : Character
     private void Run()
     {
         CancelAttack();
+        isAttackReadyAfterMove = true;
+
         Vector2 deltaPos = joystick.Direction.normalized * speed * Time.deltaTime;
         Vector3 nextPos = new Vector3(deltaPos.x, 0f, deltaPos.y) + transform.position;
 
@@ -101,25 +103,26 @@ public class Player : Character
     }
     public void Attack()
     {
-            IsAttacking = true;
-            ChangeAnim(Constant.ANIM_ATTACK);
-            Vector3 pos = GetFirstTargetPos();
-            TurnTo(pos);
-            StartCoroutine(Throw(pos));
+        isAttacking = true;
+        ChangeAnim(Constant.ANIM_ATTACK);
+        Vector3 pos = GetFirstTargetPos();
+        TurnTo(pos);
+        StartCoroutine(Throw(pos));
     }
     public void CancelAttack()
     {
-        IsAttacking = false;
+        isAttacking = false;
     }
     private IEnumerator Throw(Vector3 target)
     {
         yield return new WaitForSeconds(Constant.TIME_ATTACK_DELAY);
-        if (IsAttacking)
+        if (isAttacking)
         {
             curWeapon.Throw(target);
             SoundManager.Instance.Play(AudioType.SFX_ThrowWeapon);
+            isAttackReadyAfterMove = false;
         }
-        IsAttacking = false;
+        isAttacking = false;
 
         yield return new WaitForSeconds(0.1f);
         Idle();
