@@ -26,14 +26,14 @@ public class Constant
 public enum PantType
 {
     BatMan = 0,
-    ChamBi ,
-    Comy,
-    DaBao,
-    Oninon,
-    Pokemon,
-    Rainbow,
-    Skull,
-    VanTim,
+    PolkaDot = 1,
+    America = 2,
+    Leopard = 3,
+    Oninon = 4,
+    Pokemon = 5,
+    Rainbow = 6,
+    Skull = 7,
+    PurpleStripes = 8,
 }
 
 public enum WeaponType
@@ -57,7 +57,7 @@ public enum HairType
     Hat_Yellow = PoolType.H_Hat_Yellow,
     Headphone = PoolType.H_Headphone,
     Horn = PoolType.H_Horn,
-    Rau = PoolType.H_Rau,
+    Mustache = PoolType.H_Mustache,
 }
 
 public enum AccessoryType
