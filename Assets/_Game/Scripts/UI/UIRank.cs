@@ -46,11 +46,11 @@ public class UIRank : UICanvas
     {
         UIManager.Instance.CloseUI<UIRank>();
         UIManager.Instance.OpenUI<UIMainMenu>();
-        LevelManager.Instance.OnReset();
         if (gameResult == GameResult.Win)
         {
             LevelManager.Instance.OnNextLevel();
         }
+        LevelManager.Instance.OnReset();
     }
 
     public void OnTripleButtonClick()
