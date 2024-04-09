@@ -250,5 +250,9 @@ public class Player : Character
     {
         score *= 3;
     }
+    public void OnGameStart()
+    {
+        indicator.SetAlpha(1);
+    }
     #endregion
 }

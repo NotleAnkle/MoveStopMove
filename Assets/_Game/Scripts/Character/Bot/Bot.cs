@@ -27,7 +27,6 @@ public class Bot : Character
         curState = new IdleState();
         TurnOffTargetCircle();
         indicator.SetName(nameData.getRandomName());
-        indicator.SetAlpha(1);
         ScaleUpTargetCircle();
     }
     public override void OnDeath()

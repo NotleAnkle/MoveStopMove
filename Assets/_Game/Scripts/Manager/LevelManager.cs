@@ -12,28 +12,55 @@ public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private Player player;
     [SerializeField] private List<Bot> bots = new List<Bot>();
+    [SerializeField] private LevelData levelData;
 
     public Player Player => player;
-
-    private int botNumber = 50;
-
     public int BotNumberLeft => botNumber + bots.Count;
 
     public int PlayerRank { get; private set;}
 
+    private SingleLevelData curLevelData;
+    private GameObject curMap;
+    private int botNumber = 50;
+    private int curLevel = 1;
+
+    private void Start()
+    {
+        curLevelData = levelData.GetLevel(0);
+        curMap = Instantiate(curLevelData.map);
+    }
+
     public void OnInit() 
     {
-        for (int i = 0; i < 8; i++)
+        player.OnGameStart();
+        for (int i = 0; i < curLevelData.inMapBotNumber; i++)
         {
             SpawnBot();
         }
     }
+
+    public void OnNextLevel()
+    {
+        if (curLevel < 3)
+        {
+            curLevel++;
+        }
+        else curLevel = 1;
+        
+        curLevelData = levelData.GetLevel(curLevel - 1);
+
+        Destroy(curMap.gameObject);
+        curMap = Instantiate(curLevelData.map);
+
+        ClearCache();
+    }
+
     public void OnReset()
     {
         DespawnBot();
         player.OnInit();
         bots.Clear();
-        botNumber = 50;
+        botNumber = curLevelData.totalBotNumber;
         SetTargetIndicatorAlpha(0);
     }
 
@@ -82,7 +109,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnFail()
     {
-        UIManager.Instance.CloseAll();
+        UIManager.Instance.CloseUI<UISetting>();
         GameManager.ChangeState(GameState.Revive);
         StartCoroutine(FailCountdown());
     }
@@ -119,10 +146,5 @@ public class LevelManager : Singleton<LevelManager>
         Cache<Bullet>.Clear();
         Cache<Bot>.Clear();
         Cache<Character>.Clear();
-    }
-
-    private void NextLevel()
-    {
-        ClearCache(); 
     }
 }

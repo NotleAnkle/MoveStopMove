@@ -16,6 +16,8 @@ public class UIRank : UICanvas
 
     [SerializeField] private Button btnTriple;
 
+    private GameResult gameResult;
+
     private void OnEnable()
     {
         txtCoin.text = LevelManager.Instance.Player.Score.ToString();
@@ -25,12 +27,14 @@ public class UIRank : UICanvas
 
     public void OnVictory()
     {
+        gameResult = GameResult.Win;
         panelRank.SetActive(false);
         panelVictory.SetActive(true);
         SoundManager.Instance.Play(AudioType.SFX_EndWin);
     }
     public void OnFail()
     {
+        gameResult = GameResult.Lose;
         SoundManager.Instance.Play(AudioType.SFX_EndLose);
         panelRank.SetActive(true);
         panelVictory.SetActive(false);
@@ -42,6 +46,10 @@ public class UIRank : UICanvas
     {
         UIManager.Instance.CloseUI<UIRank>();
         UIManager.Instance.OpenUI<UIMainMenu>();
+        if(gameResult == GameResult.Win)
+        {
+            LevelManager.Instance.OnNextLevel();
+        }
     }
 
     public void OnTripleButtonClick()

@@ -47,6 +47,7 @@ public class Character : GameUnit
             indicator = SimplePool.Spawn<TargetIndicator>(PoolType.TargetIndicator);
         }
         indicator.SetTarget(indicatorPoint);
+        indicator.SetAlpha(1);
     }
     public virtual void OnDeath()
     {
@@ -111,7 +112,7 @@ public class Character : GameUnit
 
     private bool IsTargetInRange(Character target)
     {
-        return Vector3.Distance(TF.position, target.TF.position) < Range;
+        return Vector3.Distance(TF.position, target.TF.position) < Range/0.94;
     }
 
     public Vector3 GetFirstTargetPos()
