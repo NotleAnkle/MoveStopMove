@@ -7,7 +7,7 @@ public class Character : GameUnit
 {
     #region components
     //Target 
-    private List<Character> targetList = new List<Character>();
+    [SerializeField] private List<Character> targetList = new List<Character>();
 
     // Skin & weapon
     [SerializeField] protected Skin currentSkin;
@@ -33,11 +33,6 @@ public class Character : GameUnit
 
     #endregion
 
-    private void Awake()
-    {
-        this.RegisterListener(EventID.OnCharacterDie, (param) => RemoveTarget((Character)param));
-    }
-
     #region basic
     public virtual void OnInit()
     {
@@ -55,7 +50,7 @@ public class Character : GameUnit
     }
     public virtual void OnDeath()
     {
-        this.PostEvent(EventID.OnCharacterDie, this);
+        LevelManager.Instance.CheckCharacterDie(this);
         ChangeAnim(Constant.ANIM_DEAD);
         IsDying = true;
         indicator.SetAlpha(0);
@@ -93,6 +88,30 @@ public class Character : GameUnit
     public void RemoveTarget(Character character)
     {
         targetList.Remove(character);
+    }
+
+    public void CheckTargetList()
+    {
+        List<Character> removelist = new List<Character>();
+
+        for(int i = 0; i < targetList.Count; i++)
+        {
+            if (targetList[i].IsDying || !IsTargetInRange(targetList[i]))
+            {
+                removelist.Add(targetList[i]);
+            }
+        }
+
+        for(int i = 0; i < removelist.Count; i++)
+        {
+            RemoveTarget(removelist[i]);
+        }
+
+    }
+
+    private bool IsTargetInRange(Character target)
+    {
+        return Vector3.Distance(TF.position, target.TF.position) < Range;
     }
 
     public Vector3 GetFirstTargetPos()

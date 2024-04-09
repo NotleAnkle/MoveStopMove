@@ -9,7 +9,11 @@ public class AttackState : IState<Bot>
     public void OnEnter(Bot t)
     {
         t.StopMove();
-        t.Attack();
+        t.CheckTargetList();
+        if (t.IsHasTarget)
+        {
+            t.Attack();
+        }
     }
 
     public void OnExecute(Bot t)

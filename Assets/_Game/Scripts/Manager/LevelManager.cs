@@ -21,12 +21,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public int PlayerRank { get; private set;}
 
-    //dang ky event
-    private void Awake()
-    {
-        this.RegisterListener(EventID.OnCharacterDie, (param) => CheckCharacter((Character)param));
-    }
-
     public void OnInit() 
     {
         for (int i = 0; i < 8; i++)
@@ -44,8 +38,9 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     //kiem tra character duoc event tra ve
-    public void CheckCharacter(Character character)
+    public void CheckCharacterDie(Character character)
     {
+        UIManager.Instance.GetUI<UIPlay>().OnCharacterDie();
         if (character != player)
         {
             bots.Remove((Bot)character);
@@ -64,6 +59,7 @@ public class LevelManager : Singleton<LevelManager>
         else
         {
             PlayerRank = bots.Count + botNumber;
+            OnFail();
         }        
     }
     private void SpawnBot()

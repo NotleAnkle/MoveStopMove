@@ -10,22 +10,15 @@ public class UIPlay : UICanvas
     private int botNumberLeft = 50;
     float timer = 0f;
 
-    //dang ky event
-    private void Awake()
-    {
-        this.RegisterListener(EventID.OnCharacterDie, _ => OnBotDie());
-    }
-
     public override void Open()
     {
         base.Open();
         botNumberLeft = LevelManager.Instance.BotNumberLeft;
         botNumberText.text = "Alive: " + botNumberLeft;
-        LevelManager.Instance.SetTargetIndicatorAlpha(1);
         GameManager.ChangeState(GameState.GamePlay);
     }
 
-    private void OnBotDie()
+    public  void OnCharacterDie()
     {
         botNumberLeft--;
         botNumberText.text = "Alive: " + botNumberLeft;

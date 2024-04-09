@@ -11,6 +11,7 @@ public class DeadState : IState<Bot>
     {
         t.StopMove();
         t.ChangeAnim(Constant.ANIM_DEAD);
+        t.TurnOffTargetCircle();
     }
 
     public void OnExecute(Bot t)

@@ -44,8 +44,6 @@ public class Player : Character
     {
         base.OnDeath();
         SoundManager.Instance.Play(AudioType.SFX_PlayerDie);
-        LevelManager.Instance.OnFail();
-
     }
 
     public void OnRevive()
@@ -67,6 +65,7 @@ public class Player : Character
             }
             else
             {
+                CheckTargetList();
                 if (IsHasTarget)
                 {
                     if (IsAttackable && isAttackReadyAfterMove)

@@ -305,9 +305,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -738.3465}
-  m_SizeDelta: {x: 600, y: -1476.6931}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 296.35168}
+  m_SizeDelta: {x: 0.00012207, y: 592.7031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5328824447100855288
 CanvasRenderer:
@@ -778,8 +778,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayUI, Assembly-CSharp
+      - m_Target: {fileID: -2597049468038222486}
+        m_TargetAssemblyTypeName: UIPlay, Assembly-CSharp
         m_MethodName: OnSettingButtonClick
         m_Mode: 1
         m_Arguments:

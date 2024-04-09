@@ -30,7 +30,7 @@ public class PatrolState : IState<Bot>
         }
         if (t.IsHasTarget && targetCooldown < 0.0001f)
         {
-            if(Random.Range(0, 1f) > Constant.BOT_RATION_ATTACK)
+            if (Random.Range(0, 1f) > Constant.BOT_RATION_ATTACK)
             {
                 t.ChangeState(new AttackState());
             }
