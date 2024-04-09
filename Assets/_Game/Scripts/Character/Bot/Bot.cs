@@ -27,6 +27,8 @@ public class Bot : Character
         curState = new IdleState();
         TurnOffTargetCircle();
         indicator.SetName(nameData.getRandomName());
+        indicator.SetAlpha(1);
+        ScaleUpTargetCircle();
     }
     public override void OnDeath()
     {
@@ -42,6 +44,7 @@ public class Bot : Character
     {
         base.PowerUp();
         attackRange.OnInit(this);
+        ScaleUpTargetCircle();
     }
     public override void EquipedCloth()
     {
@@ -105,6 +108,10 @@ public class Bot : Character
     }
     #endregion
 
+    private void ScaleUpTargetCircle()
+    {
+        targetCircle.transform.localScale = Vector3.one * (Range / Constant.RANGE_DEFAULT);
+    }
     public void TurnOnTargetCircle()
     {
         targetCircle?.SetActive(true);
