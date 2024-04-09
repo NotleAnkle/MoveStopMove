@@ -46,7 +46,8 @@ public class UIRank : UICanvas
     {
         UIManager.Instance.CloseUI<UIRank>();
         UIManager.Instance.OpenUI<UIMainMenu>();
-        if(gameResult == GameResult.Win)
+        LevelManager.Instance.OnReset();
+        if (gameResult == GameResult.Win)
         {
             LevelManager.Instance.OnNextLevel();
         }

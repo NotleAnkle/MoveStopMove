@@ -10,7 +10,6 @@ namespace _UI.Scripts
         public override void Open()
         {
             base.Open();
-            LevelManager.Instance.OnReset();
             GameManager.ChangeState(GameState.MainMenu);
             CameraFollower.Instance.ChangeState(CameraFollower.State.MainMenu);
 
@@ -21,7 +20,7 @@ namespace _UI.Scripts
             SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
 
             UIManager.Instance.CloseUI<UIMainMenu>();
-            GameManager.Instance.OnRestart();
+            GameManager.Instance.OnGameStart();
         }
 
         public void SkinButton()

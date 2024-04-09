@@ -51,15 +51,16 @@ namespace _UI.Scripts.UI
         private void Start()
         {
             UIManager.Instance.OpenUI<UIMainMenu>();
+            LevelManager.Instance.OnReset();
 
-            if(PlayerPrefs.GetInt("firstTime", 1) == 1)
+            if (PlayerPrefs.GetInt("firstTime", 1) == 1)
             {
                 UserData.Ins.OnResetData();
                 PlayerPrefs.SetInt("firstTime", 0);
             }
         }
 
-        public void OnRestart()
+        public void OnGameStart()
         {
             LevelManager.Instance.OnInit();
             UIManager.Instance.OpenUI<UIPlay>();

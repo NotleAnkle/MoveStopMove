@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1149382207}
   bots: []
+  levelData: {fileID: 11400000, guid: c8923e9edb0bd8f41b10016de88030b3, type: 2}
 --- !u!4 &290225896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2874804926718779929, guid: 6fbcc16b9c91d414ea4bd6c553a3f023, type: 3}
