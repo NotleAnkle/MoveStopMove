@@ -122,7 +122,7 @@ public class LevelManager : Singleton<LevelManager>
     public void OnVictory()
     {
         GameManager.ChangeState(GameState.Revive);
-        UIManager.Instance.OpenUI<UIRank>().OnVictory();
+        UIManager.Instance.OpenUI<UIEndGame>().OnVictory();
         player.ChangeAnim(Constant.ANIM_DANCE_WIN);
     }
 

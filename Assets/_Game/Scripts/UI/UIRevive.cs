@@ -19,7 +19,7 @@ public class UIRevive : UICanvas
     {
         CloseDirectly();
         SoundManager.Instance.Play(AudioType.SFX_ButtonClick);
-        UIManager.Instance.OpenUI<UIRank>().OnFail();
+        UIManager.Instance.OpenUI<UIEndGame>().OnFail();
     }
 
     public void OneSecPass()

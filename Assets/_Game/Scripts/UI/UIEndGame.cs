@@ -1,11 +1,9 @@
 using _UI.Scripts;
 using _UI.Scripts.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIRank : UICanvas
+public class UIEndGame : UICanvas
 {
     [SerializeField] private Text txtRank;
     [SerializeField] private Text txtName;
@@ -44,7 +42,7 @@ public class UIRank : UICanvas
 
     public void OnTouch()
     {
-        UIManager.Instance.CloseUI<UIRank>();
+        UIManager.Instance.CloseUI<UIEndGame>();
         UIManager.Instance.OpenUI<UIMainMenu>();
         if (gameResult == GameResult.Win)
         {

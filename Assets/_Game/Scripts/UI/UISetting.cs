@@ -42,6 +42,7 @@ public class UISetting : UICanvas
         CloseDirectly();
         UIManager.Instance.CloseUI<UIPlay>();
         UIManager.Instance.OpenUI<UIMainMenu>();
+        LevelManager.Instance.OnReset();
     }
 
     public void OnContinueButtonClick()
