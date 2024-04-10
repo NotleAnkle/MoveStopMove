@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 961611212334623544}
   - component: {fileID: 961611212334623545}
   m_Layer: 5
-  m_Name: Ads
+  m_Name: Button - Trial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2852757040261117441}
         m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
         m_MethodName: OnTryButtonClick
         m_Mode: 1
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 961611212713782037}
   - component: {fileID: 961611212713782122}
   m_Layer: 5
-  m_Name: txtCost
+  m_Name: Text - Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 961611212955918355}
   - component: {fileID: 961611212955918352}
   m_Layer: 5
-  m_Name: txtAds
+  m_Name: Text - Ads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 961611214411046079}
   - component: {fileID: 961611214411046076}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
